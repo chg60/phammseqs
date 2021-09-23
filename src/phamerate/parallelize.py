@@ -35,10 +35,13 @@ def show_progress(current, end, width=50):
     """
     Command-line updating progressbar
 
-    :param current:
-    :param end:
-    :param width:
-    :return:
+    :param current: current index of work unit
+    :type current: int
+    :param end: total length of work units
+    :type end: int
+    :param width: desired character width of ProgressBar
+    :type width: int
+    :return: progress
     """
     progress = ProgressBar(current, end, width)
     print(f"\r{progress}", end="")
@@ -118,18 +121,18 @@ def start_processes(inputs, num_processors, verbose):
         interval = max([1, len(inputs)//100])
 
         # Put inputs into job queue
-        for i in range(len(inputs)):
+        for i, task in enumerate(inputs):
             tasks += 1
             if i % interval == 0:
                 job_queue.put((show_progress, (i, len(inputs))))
                 tasks += 1
-            job_queue.put(inputs[i])
+            job_queue.put(task)
         tasks += 1
         job_queue.put((show_progress, (len(inputs), len(inputs))))
     else:
-        for i in range(len(inputs)):
+        for i, task in enumerate(inputs):
             tasks += 1
-            job_queue.put(inputs[i])
+            job_queue.put(task)
 
     # Put a bunch of 'STOP' signals at the end of the queue
     for i in range(num_processors):
