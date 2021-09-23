@@ -13,12 +13,12 @@ from phamerate.parallelize import CPUS, parallelize
 from phamerate.utility import *
 
 # Defaults parameters
-DATE = datetime.date.today().strftime("%Y%m%d")
-OUT_DIR = pathlib.Path().cwd().joinpath(f"{DATE}_phamerate")
 TMP_DIR = pathlib.Path("/tmp/phamerate")
+
 CM, S = 0, 4.0                  # --cluster-mode, -s
 M, C, E = 0.3, 0.85, 0.001      # --min-seq-id, -c, -e
 HM, HC, HE = 0.25, 0.5, 0.001   # --min-seq-id, -c/--cov, -e/--e-profile
+
 EPILOG = """
 Steinegger M. and Soeding J. MMseqs2 enables sensitive protein
 sequence searching for the analysis of massive data sets. Nature
@@ -76,10 +76,10 @@ def parse_args():
                    help=f"number of threads to use [default: {CPUS}]")
     p.add_argument("-v", "--verbose", action="store_true",
                    help="print progress messages")
-    p.add_argument("-o", "--outdir", default=OUT_DIR,
+    p.add_argument("-o", "--outdir", default=pathlib.Path().cwd(),
                    type=pathlib.Path, metavar='',
                    help=f"path to directory where output files should go "
-                        f"[default: {str(OUT_DIR)}]")
+                        f"[default: {str(pathlib.Path().cwd())}]")
     p.add_argument("-t", "--tmpdir", default=TMP_DIR,
                    type=pathlib.Path, metavar='',
                    help=f"path where temporary file I/O should occur "
