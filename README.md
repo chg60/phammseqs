@@ -2,12 +2,14 @@
 The phamerate package facilitates pham assembly using [MMseqs2](https://www.mmseqs.com). Default parameters have
 been carefully tuned for rapid, accurate exploration of the bacteriophage protein sequence space.
 
-# Installation - Conda
+# Conda installation
 The easiest way to install the phamerate package and its dependencies is through the Anaconda/Miniconda package manager: 
 
-    conda create -n phamerate python=3.9 phamerate -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
+    conda create -n phamerate-env python=3.9 -y && conda activate phamerate-env
+    conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
+    pip3 install phamerate 
 
-# Installation - Manual
+# Manual installation
 If you don't have some flavor of conda available (and don't want to install it...) you may follow the instructions
 [here](https://github.com/soedinglab/mmseqs2#installation) to manually install `mmseqs`. An optional dependency,
 `clustalo` can be manually installed following the instructions [here](http://www.clustal.org/omega/). 
@@ -68,12 +70,12 @@ An alternate output path can be specified with the `-o` argument:
 This will do the same as before, except `phamily_fastas` will be found in `~/Desktop/phamerate_results` rather than the
 directory the program was invoked from.
 
-If your dataset consists in multiple FASTA files (e.g. one file per genome), you can specify multiple input files by 
-simply putting them one after the next:
+If your dataset is a pangenome or metagenome with many FASTA files (e.g. one file per genome), you can specify multiple
+input files by simply putting their paths one after the next:
 
     phamerate genome1.faa genome2.faa genome3.faa ... genomeN.faa -o ~/Desktop/phamerate_results
 
-or if all your genomes are in the same directory:
+or if all these genomes are in the same directory:
 
     phamerate /path/to/genome/fastas/*.faa -o ~/Desktop/phamerate_results
 
@@ -82,7 +84,7 @@ If you want to have an MSA for each pham, the phamerate program can accomplish t
 
     phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v
 
-The `-v` argument will make the program print progress messages to the console as it runs:
+The `-v` argument will make the program print progress messages to the console as it runs, for example:
 
     Found 378159 translations in 1 file(s)...
     Creating MMseqs2 database...
@@ -102,23 +104,19 @@ been computed. This should give you a sense of whether you have time to make a c
 # Advanced Usage
 For folks with large bacterial pan-genomes to analyze, you may find that the BLAST-based method used by 
 [Roary](https://github.com/sanger-pathogens/Roary) is too slow for your needs. In this case, phamerate may be able to 
-help, by raising the `--identity` threshold to 0.9 (same as the 90% identity threshold used by Roary) and supplying 
+help, by raising the `--identity` threshold to 0.95 (same as the 95% identity threshold used by Roary) and supplying 
 the `--no-hmm` argument, as you won't be searching for remote homologs:
 
-    phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v --identity 0.9 --no-hmm
+    phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v --identity 0.95 --no-hmm
 
-Which will print:
+Which will print something like:
 
-    Found 378159 translations in 1 file(s)...
+    Found 378159 translations in 3829 files...
     Creating MMseqs2 database...
     Performing sequence-sequence clustering...
     Parsing first iteration phams...
-    Building HMMs from pre-phams...
-    Extracting consensus sequences from HMMs...
-    Performing consensus-HMM clustering...
-    Parsing second iteration phams...
-    Found 22897 phamilies in dataset...
-    Aligning phams with Clustal Omega...
+    Found 93674 phamilies in dataset...
+    Computing phamily alignments with Clustal Omega...
     [############                                     ] 25%
 
 Fair warning: at present, phamerate does NOT make any effort to split paralogs out of gene phamilies.
@@ -126,7 +124,5 @@ Fair warning: at present, phamerate does NOT make any effort to split paralogs o
 # Future Releases
 We would like to do the following in future releases:
 * remove paralogs from phamilies                                        [enhancement]
-* export gene_presence_absence.csv                                      [enhancement]
-* export summary file with numbers of core/soft-core/shell/cloud genes  [enhancement]
 * export figure showing marginal pan-genome (each new genome adds...)   [enhancement]
 * create tree(s) based on well-conserved genes                          [enhancement]
