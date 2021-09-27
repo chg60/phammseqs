@@ -5,10 +5,9 @@
 import sys
 import argparse
 import pathlib
-import datetime
 import shutil
 
-from phamerate.clustalo import clustalo_align
+from phamerate.clustalo import align_phams
 from phamerate.parallelize import CPUS, parallelize
 from phamerate.utility import *
 
@@ -133,23 +132,47 @@ def main():
     if not fasta_dir.is_dir():
         fasta_dir.mkdir()
 
-    for i, pham in enumerate(phams):
-        fasta_file = fasta_dir.joinpath(f"pham_{i + 1}.faa")
-        with open(fasta_file, "w") as fh:
-            fh.write(str(pham))
+    write_pham_fastas(phams, fasta_dir, nr_only=align)
 
     if align:
         if verbose:
-            print("Aligning phams with Clustal Omega...")
+            print(f"Computing phamily alignments with Clustal Omega...")
 
         align_dir = outdir.joinpath("phamily_aligns")
         if not align_dir.is_dir():
             align_dir.mkdir(parents=False)
 
-        jobs = [(x, align_dir) for x in fasta_dir.iterdir()]
-        parallelize(jobs, cpus, clustalo_align, verbose)
+        # Create 100 jobs so each job increments ProgressBar by 1%
+        pre_jobs, jobs = dict(), list()
+        for i in range(len(phams)):
+            job_key = i % 100
 
-    # TODO: pan-genome style analyses, à la Roary gene_presence_absence.csv
+            fasta_path = fasta_dir.joinpath(f"pham_{i+1}.faa")
+            align_path = align_dir.joinpath(f"pham_{i+1}.aln")
+
+            if job_key in pre_jobs:
+                pre_jobs[job_key]["fastas"].append(fasta_path)
+                pre_jobs[job_key]["aligns"].append(align_path)
+                pre_jobs[job_key]["phams"].append(phams[i])
+            else:
+                pre_jobs[job_key] = {"fastas": [fasta_path],
+                                     "aligns": [align_path],
+                                     "phams": [phams[i]]}
+
+        for job_dict in pre_jobs.values():
+            jobs.append((job_dict["phams"], job_dict["fastas"],
+                         job_dict["aligns"]))
+        parallelize(jobs, cpus, align_phams, verbose)
+
+    if verbose:
+        print("Performing basic pan/meta-genome analyses...")
+
+    # Roary-style pangenome analyses
+    pangenome_map = map_pangenome(phams, len(database.genomes))
+    summarize(pangenome_map, phams, list(database.genomes), outdir)
+
+    if verbose:
+        print("Done!")
 
 
 if __name__ == "__main__":
