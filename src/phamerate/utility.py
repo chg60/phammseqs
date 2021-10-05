@@ -1,7 +1,7 @@
 """High-level utility functions for pham assembly and post-processing."""
 
 from phamerate.classes import SequenceDB, Pham
-from phamerate.fasta import parse_fasta, write_fasta
+from phamerate.fileio import sniff, parse_genbank, parse_fasta, write_fasta
 from phamerate.mmseqs import *
 
 HEADER = ["Gene", "Non unique Gene name", "No. isolates", "No. sequences",
@@ -23,7 +23,13 @@ def create_database(input_files):
     database = SequenceDB()
     for input_file in input_files:
         genome = input_file.stem
-        headers, sequences = parse_fasta(input_file)
+        fmt = sniff(input_file)
+        if fmt == "fasta":
+            headers, sequences = parse_fasta(input_file)
+        elif fmt == "genbank":
+            headers, sequences = parse_genbank(input_file)
+        else:
+            continue
         for geneid, translation in zip(headers, sequences):
             database.add_gene(geneid, genome, translation)
 

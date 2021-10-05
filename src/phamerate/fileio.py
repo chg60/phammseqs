@@ -1,4 +1,45 @@
-"""Functions for writing and parsing FASTA files."""
+from Bio import SeqIO
+
+
+def sniff(filepath):
+    """
+    Sniffs the first line of the file to determine the file format.
+
+    Options are: "fasta", "genbank", or None
+
+    :param filepath: the path to the file we need to sniff
+    :type filepath: pathlib.Path
+    :return: fmt
+    """
+    fmt = None
+    with open(filepath, "r") as file_sniffer:
+        line = file_sniffer.readline()
+
+    if line.startswith(">"):
+        fmt = "fasta"
+    elif line.startswith("LOCUS"):
+        fmt = "genbank"
+
+    return fmt
+
+
+def parse_genbank(filepath):
+    """
+    Parse CDS features from records in a Genbank flatfile.
+
+    :param filepath:
+    :return: headers, sequences
+    """
+    headers, sequences = list(), list()
+    for record in SeqIO.parse(filepath, "genbank"):
+        for feature in record.features:
+            if feature.type == "CDS":
+                header = feature.qualifiers["locus_tag"][0]
+                product = feature.qualifiers["product"][0]
+                headers.append(" ".join((header, product)))
+                sequences.append(feature.qualifiers["translation"][0])
+
+    return headers, sequences
 
 
 def write_fasta(headers, sequences, filepath, width=80):
