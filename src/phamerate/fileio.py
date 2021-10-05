@@ -34,9 +34,26 @@ def parse_genbank(filepath):
     for record in SeqIO.parse(filepath, "genbank"):
         for feature in record.features:
             if feature.type == "CDS":
-                header = feature.qualifiers["locus_tag"][0]
-                product = feature.qualifiers["product"][0]
-                headers.append(" ".join((header, product)))
+                try:
+                    locus_tag = feature.qualifiers["locus_tag"][0]
+                except KeyError:
+                    locus_tag = ""
+                try:
+                    protein_id = feature.qualifiers["protein_id"][0]
+                except KeyError:
+                    protein_id = ""
+                try:
+                    product = feature.qualifiers["product"][0]
+                except KeyError:
+                    product = "hypothetical protein"
+
+                if not locus_tag and not protein_id:
+                    print("Please submit a GitHub issue about this gene:")
+                    print(feature)
+                    print("No 'protein_id' or 'locus_tag' qualifiers...")
+                    continue
+
+                headers.append(" ".join((protein_id, locus_tag, product)))
                 sequences.append(feature.qualifiers["translation"][0])
 
     return headers, sequences
