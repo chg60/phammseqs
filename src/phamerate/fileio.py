@@ -46,6 +46,10 @@ def parse_genbank(filepath):
                     product = feature.qualifiers["product"][0]
                 except KeyError:
                     product = "hypothetical protein"
+                try:
+                    translation = feature.qualifiers["translation"][0]
+                except KeyError:
+                    translation = feature.translate(record.seq)
 
                 if not locus_tag and not protein_id:
                     print("Please submit a GitHub issue about this gene:")
@@ -53,8 +57,13 @@ def parse_genbank(filepath):
                     print("No 'protein_id' or 'locus_tag' qualifiers...")
                     continue
 
-                headers.append(" ".join((protein_id, locus_tag, product)))
-                sequences.append(feature.qualifiers["translation"][0])
+                if not locus_tag:
+                    header = f"{protein_id} {product}"
+                else:
+                    header = f"{locus_tag} {product}"
+
+                headers.append(header)
+                sequences.append(translation)
 
     return headers, sequences
 
