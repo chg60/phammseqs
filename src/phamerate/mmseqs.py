@@ -3,7 +3,7 @@
 from phamerate.cmd import run_command
 
 
-def mmseqs_createdb(fasta, tmp_dir):
+def mmseqs_createdb(fasta, tmp_dir, debug=False):
     """
     Run 'mmseqs createdb' command.
 
@@ -11,13 +11,18 @@ def mmseqs_createdb(fasta, tmp_dir):
     :type fasta: pathlib.Path
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
-    command = f"mmseqs createdb {fasta} {tmp_dir}/sequenceDB -v 1"
-    run_command(command)
+    command = f"mmseqs createdb {fasta} {tmp_dir}/sequenceDB -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
 
 def mmseqs_cluster(tmp_dir, cluster_mode, sens, identity, coverage, evalue,
-                   max_seqs=1000, steps=1, align_mode=3, cov_mode=0, threads=1):
+                   max_seqs=1000, steps=1, align_mode=3, cov_mode=0, threads=1,
+                   debug=False):
     """
     Run 'mmseqs cluster' command.
 
@@ -43,17 +48,20 @@ def mmseqs_cluster(tmp_dir, cluster_mode, sens, identity, coverage, evalue,
     :type cov_mode: int
     :param threads: how many threads to use?
     :type threads: int
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs cluster {tmp_dir}/sequenceDB {tmp_dir}/clusterDB " \
               f"{tmp_dir} --min-seq-id {identity} -c {coverage} -e {evalue} " \
               f"-s {sens} --max-seqs {max_seqs} --cluster-steps {steps} " \
               f"--threads {threads} --alignment-mode {align_mode} --cov-mode " \
               f"{cov_mode} --cluster-mode {cluster_mode} --cluster-reassign " \
-              f"-v 1"
-    run_command(command)
+              f"-v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
-
-def mmseqs_result2profile(tmp_dir, threads=1):
+def mmseqs_result2profile(tmp_dir, threads=1, debug=False):
     """
     Run 'mmseqs result2profile' command.
 
@@ -61,15 +69,17 @@ def mmseqs_result2profile(tmp_dir, threads=1):
     :type tmp_dir: pathlib.Path
     :param threads: how many threads to use?
     :type threads: int
-    :return: command
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs result2profile {tmp_dir}/sequenceDB " \
               f"{tmp_dir}/sequenceDB {tmp_dir}/clusterDB {tmp_dir}/profileDB " \
-              f"--threads {threads} -v 1"
-    run_command(command)
+              f"--threads {threads} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
-
-def mmseqs_profile2consensus(tmp_dir, threads=1):
+def mmseqs_profile2consensus(tmp_dir, threads=1, debug=False):
     """
     Run 'mmseqs profile2consensus' command.
 
@@ -77,15 +87,17 @@ def mmseqs_profile2consensus(tmp_dir, threads=1):
     :type tmp_dir: pathlib.Path
     :param threads: how many threads to use?
     :type threads: int
-    :return: command
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs profile2consensus {tmp_dir}/profileDB " \
-              f"{tmp_dir}/consensusDB --threads {threads} -v 1"
-    run_command(command)
-
+              f"{tmp_dir}/consensusDB --threads {threads} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
 def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
-                  align_mode=3, cov_mode=0, threads=1):
+                  align_mode=3, cov_mode=0, threads=1, debug=False):
     """
     Return 'mmseqs search' command.
 
@@ -107,18 +119,20 @@ def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
     :type align_mode: int
     :param cov_mode: MMseqs2 coverage mode
     :type cov_mode: int
-    :return: command
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs search {tmp_dir}/profileDB {tmp_dir}/consensusDB " \
               f"{tmp_dir}/alignDB {tmp_dir} --min-seq-id {identity} -c " \
               f"{coverage} --cov  {coverage} -e {evalue} --e-profile " \
               f"{evalue} --threads  {threads} --max-seqs {max_seqs} " \
               f"--alignment-mode {align_mode} --cov-mode {cov_mode} " \
-              f"--add-self-matches -v 1"
-    run_command(command)
+              f"--add-self-matches -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
-
-def mmseqs_clust(tmp_dir, cluster_mode, threads=1):
+def mmseqs_clust(tmp_dir, cluster_mode, threads=1, debug=False):
     """
     Return 'mmseqs clust' command.
 
@@ -128,14 +142,17 @@ def mmseqs_clust(tmp_dir, cluster_mode, threads=1):
     :type cluster_mode: int
     :param threads: how many threads to use?
     :type threads: int
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs clust {tmp_dir}/consensusDB {tmp_dir}/alignDB " \
               f"{tmp_dir}/resultDB --cluster-mode {cluster_mode} " \
-              f"--threads {threads} -v 1"
-    run_command(command)
+              f"--threads {threads} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
-
-def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1):
+def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
     """
     Run 'mmseqs createseqfiledb' command after sequence-sequence
     clustering.
@@ -146,18 +163,23 @@ def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1):
     :type outfile: pathlib.Path
     :param threads: how many threads to use?
     :type threads: int
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs createseqfiledb {tmp_dir}/sequenceDB " \
               f"{tmp_dir}/clusterDB {tmp_dir}/firstIterDB --threads " \
-              f"{threads} -v 1"
-    run_command(command)
+              f"{threads} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
     command = f"mmseqs result2flat {tmp_dir}/sequenceDB {tmp_dir}/sequenceDB " \
-              f"{tmp_dir}/firstIterDB {outfile} -v 1"
-    run_command(command)
+              f"{tmp_dir}/firstIterDB {outfile} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
-
-def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1):
+def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
     """
     Run 'mmseqs createseqfiledb' command after consensus-HMM
     clustering.
@@ -168,15 +190,21 @@ def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1):
     :type outfile: pathlib.Path
     :param threads: how many threads to use?
     :type threads: int
+    :param debug: run in debug mode (verbose output to console)
+    :type debug: bool
     """
     command = f"mmseqs createseqfiledb {tmp_dir}/sequenceDB " \
               f"{tmp_dir}/resultDB {tmp_dir}/secondIterDB --threads " \
-              f"{threads} -v 1"
-    run_command(command)
+              f"{threads} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
     command = f"mmseqs result2flat {tmp_dir}/profileDB {tmp_dir}/consensusDB " \
-              f"{tmp_dir}/secondIterDB {outfile} -v 1"
-    run_command(command)
+              f"{tmp_dir}/secondIterDB {outfile} -v 3"
+    out, err = run_command(command, debug)
+    if debug:
+        print(out), print(err)
 
 
 def parse_mmseqs_output(outfile):

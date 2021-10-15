@@ -31,7 +31,10 @@ def create_database(input_files):
         else:
             continue
         for geneid, translation in zip(headers, sequences):
-            database.add_gene(geneid, genome, translation)
+            try:
+                database.add_gene(geneid, genome, translation)
+            except ValueError as err:
+                print(f"Error {err.args[0]}: {err.args[1]}")
 
     return database
 
@@ -89,7 +92,7 @@ def merge_pre_and_hmm_phams(hmm_phams, pre_phams, database):
 
 
 def assemble_phams(database, first_iter, second_iter, threads,
-                   verbose, skip_hmm, tmp_dir):
+                   verbose, skip_hmm, tmp_dir, debug=False):
     """
     Perform pham assembly and return the resultant phams.
 
@@ -107,6 +110,8 @@ def assemble_phams(database, first_iter, second_iter, threads,
     :type skip_hmm: bool
     :param tmp_dir: temporary directory
     :type tmp_dir: pathlib.Path
+    :param debug: print verbose outputs to the console
+    :type debug: bool
     :return: phams
     """
     if verbose:
@@ -117,18 +122,19 @@ def assemble_phams(database, first_iter, second_iter, threads,
     iter_2_out = tmp_dir.joinpath("secondIter.txt")
 
     dump_nr_translations(database, nr_fasta)
-    mmseqs_createdb(nr_fasta, tmp_dir)
+    mmseqs_createdb(nr_fasta, tmp_dir, debug=debug)
 
     if verbose:
         print("Performing sequence-sequence clustering...")
 
     clu_mode, sens, i, c, e = first_iter
-    mmseqs_cluster(tmp_dir, clu_mode, sens, i, c, e, threads=threads)
+    mmseqs_cluster(tmp_dir, clu_mode, sens, i, c, e, threads=threads,
+                   debug=debug)
 
     if verbose:
         print("Parsing first iteration phams...")
 
-    mmseqs_first_iter_cleanup(tmp_dir, iter_1_out, threads)
+    mmseqs_first_iter_cleanup(tmp_dir, iter_1_out, threads, debug=debug)
 
     first_iter_phams = parse_mmseqs_output(iter_1_out)
 
@@ -136,25 +142,25 @@ def assemble_phams(database, first_iter, second_iter, threads,
         if verbose:
             print("Building HMMs from pre-phams...")
 
-        mmseqs_result2profile(tmp_dir, threads)
+        mmseqs_result2profile(tmp_dir, threads, debug=debug)
 
         if verbose:
             print("Extracting consensus sequences from HMMs...")
 
-        mmseqs_profile2consensus(tmp_dir, threads)
+        mmseqs_profile2consensus(tmp_dir, threads, debug=debug)
 
         if verbose:
             print("Performing consensus-HMM clustering...")
 
         clu_mode, sens, i, c, e = second_iter
-        mmseqs_search(tmp_dir, i, c, e, threads=threads)
+        mmseqs_search(tmp_dir, i, c, e, threads=threads, debug=debug)
 
-        mmseqs_clust(tmp_dir, clu_mode, threads)
+        mmseqs_clust(tmp_dir, clu_mode, threads, debug=debug)
 
         if verbose:
             print("Parsing second iteration phams...")
 
-        mmseqs_second_iter_cleanup(tmp_dir, iter_2_out, threads)
+        mmseqs_second_iter_cleanup(tmp_dir, iter_2_out, threads, debug=debug)
 
         second_iter_phams = parse_mmseqs_output(iter_2_out)
     else:

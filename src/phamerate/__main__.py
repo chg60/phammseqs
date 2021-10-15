@@ -75,6 +75,8 @@ def parse_args():
                    help=f"number of threads to use [default: {CPUS}]")
     p.add_argument("-v", "--verbose", action="store_true",
                    help="print progress messages")
+    p.add_argument("-d", "--debug", action="store_true",
+                   help="print very verbose messages to help debug")
     p.add_argument("-o", "--outdir", default=pathlib.Path().cwd(),
                    type=pathlib.Path, metavar='',
                    help=f"path to directory where output files should go "
@@ -105,6 +107,7 @@ def main():
     tmpdir.mkdir(parents=True)
 
     verbose = args.verbose
+    debug = args.debug
     cpus = args.cpus
     align = args.align_phams
 
@@ -123,7 +126,7 @@ def main():
     # Perform pham assembly
     phams = assemble_phams(database, first_iter_params, second_iter_params,
                            verbose=verbose, threads=cpus,
-                           skip_hmm=args.no_hmm, tmp_dir=tmpdir)
+                           skip_hmm=args.no_hmm, tmp_dir=tmpdir, debug=debug)
 
     if verbose:
         print(f"Found {len(phams)} phamilies in dataset...")
