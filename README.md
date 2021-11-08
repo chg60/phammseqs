@@ -39,6 +39,7 @@ Which should print something like:
       -h, --help         show this help message and exit
       -c , --cpus        number of threads to use [default: 8]
       -v, --verbose      print progress messages
+      -d, --debug        print very verbose messages to help debug
       -o , --outdir      path to directory where output files should go [default: /Users/your_username]
       -t , --tmpdir      path where temporary file I/O should occur [default: /tmp/phamerate]
       -a, --align-phams  use Clustal Omega to align phams (this could take awhile...)
@@ -111,7 +112,7 @@ the `--no-hmm` argument, as you won't be searching for remote homologs:
 
 Which will print something like:
 
-    Found 378159 translations in 3829 files...
+    Found 378159 translations in 1 files...
     Creating MMseqs2 database...
     Performing sequence-sequence clustering...
     Parsing first iteration phams...
@@ -120,9 +121,3 @@ Which will print something like:
     [############                                     ] 25%
 
 Fair warning: at present, phamerate does NOT make any effort to split paralogs out of gene phamilies.
-
-# Future Releases
-We would like to do the following in future releases:
-* remove paralogs from phamilies                                        [enhancement]
-* export figure showing marginal pan-genome (each new genome adds...)   [enhancement]
-* create tree(s) based on well-conserved genes                          [enhancement]
