@@ -14,9 +14,9 @@ from phamerate.utility import *
 # Defaults parameters
 TMP_DIR = pathlib.Path("/tmp/phamerate")
 
-CM, S = 0, 4.0                  # --cluster-mode, -s
-M, C, E = 0.3, 0.85, 0.001      # --min-seq-id, -c, -e
-HM, HC, HE = 0.25, 0.5, 0.001   # --min-seq-id, -c/--cov, -e/--e-profile
+CM, S = 1, 4.0  # --cluster-mode, -s
+M, C, E = 0.3, 0.85, 0.001  # --min-seq-id, -c, -e
+HM, HC, HE = 0.25, 0.5, 0.001  # --min-seq-id, -c/--cov, -e/--e-profile
 
 EPILOG = """
 Steinegger M. and Soeding J. MMseqs2 enables sensitive protein
@@ -150,8 +150,8 @@ def main():
         for i in range(len(phams)):
             job_key = i % 100
 
-            fasta_path = fasta_dir.joinpath(f"pham_{i+1}.faa")
-            align_path = align_dir.joinpath(f"pham_{i+1}.aln")
+            fasta_path = fasta_dir.joinpath(f"pham_{i + 1}.faa")
+            align_path = align_dir.joinpath(f"pham_{i + 1}.aln")
 
             if job_key in pre_jobs:
                 pre_jobs[job_key]["fastas"].append(fasta_path)

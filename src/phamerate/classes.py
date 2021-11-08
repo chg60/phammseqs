@@ -58,7 +58,7 @@ class SequenceDB:
         :type translation: str
         """
         if geneid in self._geneids_to_translations:
-            raise ValueError(f"geneid {geneid} already in database")
+            raise ValueError(f"geneid '{geneid}' already in database")
 
         self._geneids_to_translations[geneid] = translation
 

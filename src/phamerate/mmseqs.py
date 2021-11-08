@@ -61,6 +61,7 @@ def mmseqs_cluster(tmp_dir, cluster_mode, sens, identity, coverage, evalue,
     if debug:
         print(out), print(err)
 
+
 def mmseqs_result2profile(tmp_dir, threads=1, debug=False):
     """
     Run 'mmseqs result2profile' command.
@@ -79,6 +80,7 @@ def mmseqs_result2profile(tmp_dir, threads=1, debug=False):
     if debug:
         print(out), print(err)
 
+
 def mmseqs_profile2consensus(tmp_dir, threads=1, debug=False):
     """
     Run 'mmseqs profile2consensus' command.
@@ -95,6 +97,7 @@ def mmseqs_profile2consensus(tmp_dir, threads=1, debug=False):
     out, err = run_command(command, debug)
     if debug:
         print(out), print(err)
+
 
 def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
                   align_mode=3, cov_mode=0, threads=1, debug=False):
@@ -132,6 +135,7 @@ def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
     if debug:
         print(out), print(err)
 
+
 def mmseqs_clust(tmp_dir, cluster_mode, threads=1, debug=False):
     """
     Return 'mmseqs clust' command.
@@ -151,6 +155,7 @@ def mmseqs_clust(tmp_dir, cluster_mode, threads=1, debug=False):
     out, err = run_command(command, debug)
     if debug:
         print(out), print(err)
+
 
 def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
     """
@@ -178,6 +183,7 @@ def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
     out, err = run_command(command, debug)
     if debug:
         print(out), print(err)
+
 
 def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
     """

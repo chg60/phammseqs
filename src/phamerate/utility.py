@@ -34,7 +34,7 @@ def create_database(input_files):
             try:
                 database.add_gene(geneid, genome, translation)
             except ValueError as err:
-                print(f"Error {err.args[0]}: {err.args[1]}")
+                print(err)
 
     return database
 
