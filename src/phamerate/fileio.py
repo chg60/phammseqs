@@ -1,3 +1,4 @@
+import Bio.Data.CodonTable
 from Bio import SeqIO
 
 
@@ -49,7 +50,12 @@ def parse_genbank(filepath):
                 try:
                     translation = feature.qualifiers["translation"][0]
                 except KeyError:
-                    translation = feature.translate(record.seq)
+                    try:
+                        translation = feature.translate(record.seq)
+                    except Bio.Data.CodonTable.TranslationError:
+                        # Translations with selenocysteine or frameshifts will
+                        # fail to translate properly - skip these
+                        continue
 
                 if not locus_tag and not protein_id:
                     print("Please submit a GitHub issue about this gene:")
