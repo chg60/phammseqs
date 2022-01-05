@@ -7,11 +7,11 @@ import argparse
 import pathlib
 import shutil
 
-from phamerate.clustalo import align_phams
-from phamerate.parallelize import CPUS, parallelize
-from phamerate.utility import *
+from phamerate.functions.clustalo import align_phams
+from phamerate.functions.parallelize import CPUS, parallelize
+from phamerate.functions.utility import *
 
-# Defaults parameters
+# Default parameters
 TMP_DIR = pathlib.Path("/tmp/phamerate")
 
 CM, S = 1, 4.0  # --cluster-mode, -s
@@ -25,8 +25,7 @@ Biotechnology, 2017. doi: 10.1038/nbt.3988"""
 
 
 def parse_args():
-    """
-    Parse command line arguments
+    """Parse command line arguments.
 
     :return: parsed_args
     """
@@ -88,11 +87,15 @@ def parse_args():
     p.add_argument("-a", "--align-phams", action="store_true",
                    help="use Clustal Omega to align phams (this could take "
                         "awhile...)")
+    p.add_argument("-p", "--pangenome", action="store_true",
+                   help="pangenome analysis à la Roary (only meaningful if "
+                        "given one input file per genome)")
 
     return p.parse_args()
 
 
 def main():
+    """Commandline entry point for this module."""
     args = parse_args()
 
     infiles = args.infile
@@ -110,6 +113,7 @@ def main():
     debug = args.debug
     cpus = args.cpus
     align = args.align_phams
+    pangenome = args.pangenome
 
     # Set up MMseqs2 parameters
     first_iter_params = (args.cluster_mode, args.sensitivity, args.identity,
@@ -167,12 +171,13 @@ def main():
                          job_dict["aligns"]))
         parallelize(jobs, cpus, align_phams, verbose)
 
-    if verbose:
-        print("Performing basic pan/meta-genome analyses...")
+    if pangenome:
+        if verbose:
+            print("Performing basic pan/meta-genome analyses...")
 
-    # Roary-style pangenome analyses
-    pangenome_map = map_pangenome(phams, len(database.genomes))
-    summarize(pangenome_map, phams, list(database.genomes), outdir)
+        # Roary-style pangenome analyses
+        pangenome_map = map_pangenome(phams, len(database.genomes))
+        summarize(pangenome_map, phams, list(database.genomes), outdir)
 
     if verbose:
         print("Done!")
