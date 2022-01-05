@@ -43,6 +43,7 @@ Which should print something like:
       -o , --outdir      path to directory where output files should go [default: /Users/your_username]
       -t , --tmpdir      path where temporary file I/O should occur [default: /tmp/phamerate]
       -a, --align-phams  use Clustal Omega to align phams (this could take awhile...)
+      -p, --pangenome    pangenome analysis à la Roary (only meaningful if given one input file per genome)
     
     mmseqs arguments:
       --cluster-mode     clustering algorithm [default: 0]
@@ -79,6 +80,10 @@ input files by simply putting their paths one after the next:
 or if all these genomes are in the same directory:
 
     phamerate /path/to/genome/fastas/*.faa -o ~/Desktop/phamerate_results
+    
+Each input file is treated separately, so you can even mix FASTA and Genbank flatfiles in the same run!
+
+    phamerate /path/to/genome/fastas/*.faa /path/to/genome/genbanks/*.gbk -o ~/Desktop/phamerate_results
 
 If you want to have an MSA for each pham, the phamerate program can accomplish this using `clustalo` - simply use the 
 `-a` argument:
@@ -96,7 +101,7 @@ The `-v` argument will make the program print progress messages to the console a
     Performing consensus-HMM clustering...
     Parsing second iteration phams...
     Found 22897 phamilies in dataset...
-    Aligning phams with Clustal Omega...
+    Computing phamily alignments with Clustal Omega...
     [############                                     ] 25%
 
 This may be especially helpful on large datasets, as the progressbar updates to show what fraction of alignments have 
@@ -106,9 +111,9 @@ been computed. This should give you a sense of whether you have time to make a c
 For folks with large bacterial pan-genomes to analyze, you may find that the BLAST-based method used by 
 [Roary](https://github.com/sanger-pathogens/Roary) is too slow for your needs. In this case, phamerate may be able to 
 help, by raising the `--identity` threshold to 0.95 (same as the 95% identity threshold used by Roary) and supplying 
-the `--no-hmm` argument, as you won't be searching for remote homologs:
+the `--no-hmm` argument (not searching for remote homologs) and the `-p` argument to generate Roary-like outputs:
 
-    phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v --identity 0.95 --no-hmm
+    phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v --identity 0.95 --no-hmm -p
 
 Which will print something like:
 
@@ -118,6 +123,9 @@ Which will print something like:
     Parsing first iteration phams...
     Found 93674 phamilies in dataset...
     Computing phamily alignments with Clustal Omega...
-    [############                                     ] 25%
+    [#################################################] 100%
+    Performing basic pan/meta-genome analyses...
+    Done!
+    
 
-Fair warning: at present, phamerate does NOT make any effort to split paralogs out of gene phamilies.
+Fair warning: phamerate does NOT make any effort to split paralogs out of gene phamilies.
