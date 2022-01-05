@@ -1,11 +1,10 @@
 """Functions for performing pham assembly with MMseqs2."""
 
-from phamerate.cmd import run_command
+from phamerate.functions.cmd import run_command
 
 
 def mmseqs_createdb(fasta, tmp_dir, debug=False):
-    """
-    Run 'mmseqs createdb' command.
+    """Run 'mmseqs createdb' command.
 
     :param fasta: path to the FASTA file to convert
     :type fasta: pathlib.Path
@@ -16,6 +15,7 @@ def mmseqs_createdb(fasta, tmp_dir, debug=False):
     """
     command = f"mmseqs createdb {fasta} {tmp_dir}/sequenceDB -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
@@ -23,8 +23,7 @@ def mmseqs_createdb(fasta, tmp_dir, debug=False):
 def mmseqs_cluster(tmp_dir, cluster_mode, sens, identity, coverage, evalue,
                    max_seqs=1000, steps=1, align_mode=3, cov_mode=0, threads=1,
                    debug=False):
-    """
-    Run 'mmseqs cluster' command.
+    """Run 'mmseqs cluster' command.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
@@ -58,13 +57,13 @@ def mmseqs_cluster(tmp_dir, cluster_mode, sens, identity, coverage, evalue,
               f"{cov_mode} --cluster-mode {cluster_mode} --cluster-reassign " \
               f"-v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_result2profile(tmp_dir, threads=1, debug=False):
-    """
-    Run 'mmseqs result2profile' command.
+    """Run 'mmseqs result2profile' command.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
@@ -77,13 +76,13 @@ def mmseqs_result2profile(tmp_dir, threads=1, debug=False):
               f"{tmp_dir}/sequenceDB {tmp_dir}/clusterDB {tmp_dir}/profileDB " \
               f"--threads {threads} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_profile2consensus(tmp_dir, threads=1, debug=False):
-    """
-    Run 'mmseqs profile2consensus' command.
+    """Run 'mmseqs profile2consensus' command.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
@@ -95,14 +94,14 @@ def mmseqs_profile2consensus(tmp_dir, threads=1, debug=False):
     command = f"mmseqs profile2consensus {tmp_dir}/profileDB " \
               f"{tmp_dir}/consensusDB --threads {threads} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
                   align_mode=3, cov_mode=0, threads=1, debug=False):
-    """
-    Return 'mmseqs search' command.
+    """Run 'mmseqs search' command.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
@@ -132,13 +131,13 @@ def mmseqs_search(tmp_dir, identity, coverage, evalue, max_seqs=1000,
               f"--alignment-mode {align_mode} --cov-mode {cov_mode} " \
               f"--add-self-matches -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_clust(tmp_dir, cluster_mode, threads=1, debug=False):
-    """
-    Return 'mmseqs clust' command.
+    """Run 'mmseqs clust' command.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
     :type tmp_dir: pathlib.Path
@@ -153,13 +152,13 @@ def mmseqs_clust(tmp_dir, cluster_mode, threads=1, debug=False):
               f"{tmp_dir}/resultDB --cluster-mode {cluster_mode} " \
               f"--threads {threads} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
-    """
-    Run 'mmseqs createseqfiledb' command after sequence-sequence
+    """Run 'mmseqs createseqfiledb' command after sequence-sequence
     clustering.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
@@ -175,19 +174,20 @@ def mmseqs_first_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
               f"{tmp_dir}/clusterDB {tmp_dir}/firstIterDB --threads " \
               f"{threads} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
     command = f"mmseqs result2flat {tmp_dir}/sequenceDB {tmp_dir}/sequenceDB " \
               f"{tmp_dir}/firstIterDB {outfile} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
-    """
-    Run 'mmseqs createseqfiledb' command after consensus-HMM
+    """Run 'mmseqs createseqfiledb' command after consensus-HMM
     clustering.
 
     :param tmp_dir: directory MMseqs2 can use as scratch space
@@ -203,19 +203,20 @@ def mmseqs_second_iter_cleanup(tmp_dir, outfile, threads=1, debug=False):
               f"{tmp_dir}/resultDB {tmp_dir}/secondIterDB --threads " \
               f"{threads} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
     command = f"mmseqs result2flat {tmp_dir}/profileDB {tmp_dir}/consensusDB " \
               f"{tmp_dir}/secondIterDB {outfile} -v 3"
     out, err = run_command(command, debug)
+
     if debug:
         print(out), print(err)
 
 
 def parse_mmseqs_output(outfile):
-    """
-    Parse the indicated MMseqs2 FASTA-like file into a dictionary of
+    """Parse the indicated MMseqs2 FASTA-like file into a dictionary of
     integer-named phams.
 
     :param outfile: FASTA-like parseable output

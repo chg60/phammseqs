@@ -1,8 +1,9 @@
 """High-level utility functions for pham assembly and post-processing."""
 
-from phamerate.classes import SequenceDB, Pham
-from phamerate.fileio import sniff, parse_genbank, parse_fasta, write_fasta
-from phamerate.mmseqs import *
+from phamerate.classes.database import SequenceDB
+from phamerate.classes.pham import Pham
+from phamerate.functions.fileio import *
+from phamerate.functions.mmseqs import *
 
 HEADER = ["Gene", "Non unique Gene name", "No. isolates", "No. sequences",
           "Avg sequences per isolate", "Genome Fragment",

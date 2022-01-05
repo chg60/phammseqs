@@ -3,8 +3,7 @@ from Bio import SeqIO
 
 
 def sniff(filepath):
-    """
-    Sniffs the first line of the file to determine the file format.
+    """Sniff the first line of the file to determine the file format.
 
     Options are: "fasta", "genbank", or None
 
@@ -25,36 +24,44 @@ def sniff(filepath):
 
 
 def parse_genbank(filepath):
-    """
-    Parse CDS features from records in a Genbank flatfile.
+    """Parse CDS features from records in a Genbank flatfile.
 
-    :param filepath:
+    :param filepath: the path to a Genbank flatfile
+    :type filepath: pathlib.Path or str
     :return: headers, sequences
     """
     headers, sequences = list(), list()
     for record in SeqIO.parse(filepath, "genbank"):
         for feature in record.features:
             if feature.type == "CDS":
+                # Try to get the "locus_tag"; leave blank otherwise
                 try:
                     locus_tag = feature.qualifiers["locus_tag"][0]
                 except KeyError:
                     locus_tag = ""
+
+                # Try to get the "protein_id"; leave blank otherwise
                 try:
                     protein_id = feature.qualifiers["protein_id"][0]
                 except KeyError:
                     protein_id = ""
+
+                # Try to get the "product"; use "hypothetical protein" otherwise
                 try:
                     product = feature.qualifiers["product"][0]
                 except KeyError:
                     product = "hypothetical protein"
+
+                # Try to get the translation; try to generate it otherwise
                 try:
                     translation = feature.qualifiers["translation"][0]
                 except KeyError:
                     try:
                         translation = feature.translate(record.seq)
                     except Bio.Data.CodonTable.TranslationError:
-                        # Translations with selenocysteine or frameshifts will
-                        # fail to translate properly - skip these
+                        # Translations with suppressors (e.g. the protein
+                        # uses seleno-cysteine) or  frameshifts may fail to
+                        # translate properly - skip these genes
                         continue
 
                 if not locus_tag and not protein_id:
@@ -75,8 +82,7 @@ def parse_genbank(filepath):
 
 
 def write_fasta(headers, sequences, filepath, width=80):
-    """
-    Write the given headers and sequences to filepath, wrapping long
+    """Write the given headers and sequences to filepath, wrapping long
     sequence lines at the indicated width.
 
     :param headers: sequence labels
@@ -108,8 +114,7 @@ def write_fasta(headers, sequences, filepath, width=80):
 
 
 def parse_fasta(filepath):
-    """
-    Parse a FASTA file and return the headers and sequences
+    """Parse a FASTA file and return the headers and sequences.
 
     :param filepath: a FASTA file to parse
     :type filepath: pathlib.Path or str

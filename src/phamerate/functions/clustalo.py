@@ -1,5 +1,5 @@
-from phamerate.cmd import run_command
-from phamerate.fileio import parse_fasta, write_fasta
+from phamerate.functions.cmd import run_command
+from phamerate.functions.fileio import parse_fasta, write_fasta
 
 
 def clustalo_align(fasta, align):
