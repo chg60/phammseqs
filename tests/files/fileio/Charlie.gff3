@@ -1,0 +1,141 @@
+##sequence-region JN256079.1 1 43036
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1056830
+JN256079.1	Genbank	region	1	43036	.	+	.	ID=JN256079.1:1..43036;Dbxref=taxon:1056830;collected-by=S. Chalissery and N. Mistry;collection-date=27-Aug-2009;country=USA: Richmond%2C VA;gbkey=Src;identified-by=S. Chalissery and N. Mistry;isolation-source=soil;lab-host=Mycobacterium smegmatis mc2 155;lat-lon=37.54 N 77.45 W;mol_type=genomic DNA;old-name=Mycobacteriophage Charlie;strain=Charlie
+JN256079.1	Genbank	gene	64	504	.	+	.	ID=gene-CHARLIE_1;Name=1;gbkey=Gene;gene=1;gene_biotype=protein_coding;locus_tag=CHARLIE_1
+JN256079.1	Genbank	CDS	64	504	.	+	0	ID=cds-AEL19929.1;Parent=gene-CHARLIE_1;Dbxref=NCBI_GP:AEL19929.1;Name=AEL19929.1;gbkey=CDS;gene=1;locus_tag=CHARLIE_1;product=hypothetical protein;protein_id=AEL19929.1;transl_table=11
+JN256079.1	Genbank	gene	504	2036	.	+	.	ID=gene-CHARLIE_2;Name=2;gbkey=Gene;gene=2;gene_biotype=protein_coding;locus_tag=CHARLIE_2
+JN256079.1	Genbank	CDS	504	2036	.	+	0	ID=cds-AEL19930.1;Parent=gene-CHARLIE_2;Dbxref=NCBI_GP:AEL19930.1;Name=AEL19930.1;Note=terminase;gbkey=CDS;gene=2;locus_tag=CHARLIE_2;product=terminase large subunit;protein_id=AEL19930.1;transl_table=11
+JN256079.1	Genbank	gene	2029	2235	.	+	.	ID=gene-CHARLIE_3;Name=3;gbkey=Gene;gene=3;gene_biotype=protein_coding;locus_tag=CHARLIE_3
+JN256079.1	Genbank	CDS	2029	2235	.	+	0	ID=cds-AEL19931.1;Parent=gene-CHARLIE_3;Dbxref=NCBI_GP:AEL19931.1;Name=AEL19931.1;gbkey=CDS;gene=3;locus_tag=CHARLIE_3;product=hypothetical protein;protein_id=AEL19931.1;transl_table=11
+JN256079.1	Genbank	gene	2249	3538	.	+	.	ID=gene-CHARLIE_4;Name=4;gbkey=Gene;gene=4;gene_biotype=protein_coding;locus_tag=CHARLIE_4
+JN256079.1	Genbank	CDS	2249	3538	.	+	0	ID=cds-AEL19932.1;Parent=gene-CHARLIE_4;Dbxref=NCBI_GP:AEL19932.1;Name=AEL19932.1;Note=portal;gbkey=CDS;gene=4;locus_tag=CHARLIE_4;product=portal protein;protein_id=AEL19932.1;transl_table=11
+JN256079.1	Genbank	gene	3538	4344	.	+	.	ID=gene-CHARLIE_5;Name=5;gbkey=Gene;gene=5;gene_biotype=protein_coding;locus_tag=CHARLIE_5
+JN256079.1	Genbank	CDS	3538	4344	.	+	0	ID=cds-AEL19933.1;Parent=gene-CHARLIE_5;Dbxref=NCBI_GP:AEL19933.1;Name=AEL19933.1;Note=capsid maturation protease;gbkey=CDS;gene=5;locus_tag=CHARLIE_5;product=capsid maturation protease;protein_id=AEL19933.1;transl_table=11
+JN256079.1	Genbank	gene	4372	5664	.	+	.	ID=gene-CHARLIE_6;Name=6;gbkey=Gene;gene=6;gene_biotype=protein_coding;locus_tag=CHARLIE_6
+JN256079.1	Genbank	CDS	4372	5664	.	+	0	ID=cds-AEL19934.1;Parent=gene-CHARLIE_6;Dbxref=NCBI_GP:AEL19934.1;Name=AEL19934.1;Note=major capsid protein;gbkey=CDS;gene=6;locus_tag=CHARLIE_6;product=major capsid protein;protein_id=AEL19934.1;transl_table=11
+JN256079.1	Genbank	gene	5730	5963	.	+	.	ID=gene-CHARLIE_7;Name=7;gbkey=Gene;gene=7;gene_biotype=protein_coding;locus_tag=CHARLIE_7
+JN256079.1	Genbank	CDS	5730	5963	.	+	0	ID=cds-AEL19935.1;Parent=gene-CHARLIE_7;Dbxref=NCBI_GP:AEL19935.1;Name=AEL19935.1;gbkey=CDS;gene=7;locus_tag=CHARLIE_7;product=hypothetical protein;protein_id=AEL19935.1;transl_table=11
+JN256079.1	Genbank	gene	5956	6441	.	+	.	ID=gene-CHARLIE_8;Name=8;gbkey=Gene;gene=8;gene_biotype=protein_coding;locus_tag=CHARLIE_8
+JN256079.1	Genbank	CDS	5956	6441	.	+	0	ID=cds-AEL19936.1;Parent=gene-CHARLIE_8;Dbxref=NCBI_GP:AEL19936.1;Name=AEL19936.1;gbkey=CDS;gene=8;locus_tag=CHARLIE_8;product=hypothetical protein;protein_id=AEL19936.1;transl_table=11
+JN256079.1	Genbank	gene	6438	6782	.	+	.	ID=gene-CHARLIE_9;Name=9;gbkey=Gene;gene=9;gene_biotype=protein_coding;locus_tag=CHARLIE_9
+JN256079.1	Genbank	CDS	6438	6782	.	+	0	ID=cds-AEL19937.1;Parent=gene-CHARLIE_9;Dbxref=NCBI_GP:AEL19937.1;Name=AEL19937.1;gbkey=CDS;gene=9;locus_tag=CHARLIE_9;product=head-to-tail stopper;protein_id=AEL19937.1;transl_table=11
+JN256079.1	Genbank	gene	6794	6988	.	+	.	ID=gene-CHARLIE_10;Name=10;gbkey=Gene;gene=10;gene_biotype=protein_coding;locus_tag=CHARLIE_10
+JN256079.1	Genbank	CDS	6794	6988	.	+	0	ID=cds-AEL19938.1;Parent=gene-CHARLIE_10;Dbxref=NCBI_GP:AEL19938.1;Name=AEL19938.1;gbkey=CDS;gene=10;locus_tag=CHARLIE_10;product=hypothetical protein;protein_id=AEL19938.1;transl_table=11
+JN256079.1	Genbank	gene	6975	7346	.	+	.	ID=gene-CHARLIE_11;Name=11;gbkey=Gene;gene=11;gene_biotype=protein_coding;locus_tag=CHARLIE_11
+JN256079.1	Genbank	CDS	6975	7346	.	+	0	ID=cds-AEL19939.1;Parent=gene-CHARLIE_11;Dbxref=NCBI_GP:AEL19939.1;Name=AEL19939.1;gbkey=CDS;gene=11;locus_tag=CHARLIE_11;product=hypothetical protein;protein_id=AEL19939.1;transl_table=11
+JN256079.1	Genbank	gene	7343	7762	.	+	.	ID=gene-CHARLIE_12;Name=12;gbkey=Gene;gene=12;gene_biotype=protein_coding;locus_tag=CHARLIE_12
+JN256079.1	Genbank	CDS	7343	7762	.	+	0	ID=cds-AEL19940.1;Parent=gene-CHARLIE_12;Dbxref=NCBI_GP:AEL19940.1;Name=AEL19940.1;gbkey=CDS;gene=12;locus_tag=CHARLIE_12;product=hypothetical protein;protein_id=AEL19940.1;transl_table=11
+JN256079.1	Genbank	gene	7877	8935	.	+	.	ID=gene-CHARLIE_13;Name=13;gbkey=Gene;gene=13;gene_biotype=protein_coding;locus_tag=CHARLIE_13
+JN256079.1	Genbank	CDS	7877	8935	.	+	0	ID=cds-AEL19941.1;Parent=gene-CHARLIE_13;Dbxref=NCBI_GP:AEL19941.1;Name=AEL19941.1;Note=major tail subunit;gbkey=CDS;gene=13;locus_tag=CHARLIE_13;product=major tail protein;protein_id=AEL19941.1;transl_table=11
+JN256079.1	Genbank	gene	9036	9942	.	+	.	ID=gene-CHARLIE_15;Name=14;gbkey=Gene;gene=14;gene_biotype=protein_coding;locus_tag=CHARLIE_15
+JN256079.1	Genbank	CDS	9036	9512	.	+	0	ID=cds-AEL19943.1;Parent=gene-CHARLIE_15;Dbxref=NCBI_GP:AEL19943.1;Name=AEL19943.1;Note=tail assembly chaperone;exception=ribosomal slippage;gbkey=CDS;gene=14;locus_tag=CHARLIE_15;product=tail assembly chaperone;protein_id=AEL19943.1;transl_table=11
+JN256079.1	Genbank	CDS	9514	9942	.	+	0	ID=cds-AEL19943.1;Parent=gene-CHARLIE_15;Dbxref=NCBI_GP:AEL19943.1;Name=AEL19943.1;Note=tail assembly chaperone;exception=ribosomal slippage;gbkey=CDS;gene=14;locus_tag=CHARLIE_15;product=tail assembly chaperone;protein_id=AEL19943.1;transl_table=11
+JN256079.1	Genbank	gene	9036	9566	.	+	.	ID=gene-CHARLIE_14;Name=15;gbkey=Gene;gene=15;gene_biotype=protein_coding;locus_tag=CHARLIE_14
+JN256079.1	Genbank	CDS	9036	9566	.	+	0	ID=cds-AEL19942.1;Parent=gene-CHARLIE_14;Dbxref=NCBI_GP:AEL19942.1;Name=AEL19942.1;Note=tail assembly chaperone;gbkey=CDS;gene=15;locus_tag=CHARLIE_14;product=tail assembly chaperone;protein_id=AEL19942.1;transl_table=11
+JN256079.1	Genbank	gene	10123	13266	.	+	.	ID=gene-CHARLIE_16;Name=16;gbkey=Gene;gene=16;gene_biotype=protein_coding;locus_tag=CHARLIE_16
+JN256079.1	Genbank	CDS	10123	13266	.	+	0	ID=cds-AEL19944.1;Parent=gene-CHARLIE_16;Dbxref=NCBI_GP:AEL19944.1;Name=AEL19944.1;Note=tapemeasure;gbkey=CDS;gene=16;locus_tag=CHARLIE_16;product=tape measure protein;protein_id=AEL19944.1;transl_table=11
+JN256079.1	Genbank	gene	13268	14989	.	+	.	ID=gene-CHARLIE_17;Name=17;gbkey=Gene;gene=17;gene_biotype=protein_coding;locus_tag=CHARLIE_17
+JN256079.1	Genbank	CDS	13268	14989	.	+	0	ID=cds-AEL19945.1;Parent=gene-CHARLIE_17;Dbxref=NCBI_GP:AEL19945.1;Name=AEL19945.1;Note=minor tail subunit;gbkey=CDS;gene=17;locus_tag=CHARLIE_17;product=minor tail protein;protein_id=AEL19945.1;transl_table=11
+JN256079.1	Genbank	gene	14989	16698	.	+	.	ID=gene-CHARLIE_18;Name=18;gbkey=Gene;gene=18;gene_biotype=protein_coding;locus_tag=CHARLIE_18
+JN256079.1	Genbank	CDS	14989	16698	.	+	0	ID=cds-AEL19946.1;Parent=gene-CHARLIE_18;Dbxref=NCBI_GP:AEL19946.1;Name=AEL19946.1;Note=minor tail subunit;gbkey=CDS;gene=18;locus_tag=CHARLIE_18;product=minor tail protein;protein_id=AEL19946.1;transl_table=11
+JN256079.1	Genbank	gene	16714	17556	.	+	.	ID=gene-CHARLIE_19;Name=19;gbkey=Gene;gene=19;gene_biotype=protein_coding;locus_tag=CHARLIE_19
+JN256079.1	Genbank	CDS	16714	17556	.	+	0	ID=cds-AEL19947.1;Parent=gene-CHARLIE_19;Dbxref=NCBI_GP:AEL19947.1;Name=AEL19947.1;Note=minor tail subunit;gbkey=CDS;gene=19;locus_tag=CHARLIE_19;product=minor tail protein;protein_id=AEL19947.1;transl_table=11
+JN256079.1	Genbank	gene	17556	19550	.	+	.	ID=gene-CHARLIE_20;Name=20;gbkey=Gene;gene=20;gene_biotype=protein_coding;locus_tag=CHARLIE_20
+JN256079.1	Genbank	CDS	17556	19550	.	+	0	ID=cds-AEL19948.1;Parent=gene-CHARLIE_20;Dbxref=NCBI_GP:AEL19948.1;Name=AEL19948.1;Note=minor tail subunit;gbkey=CDS;gene=20;locus_tag=CHARLIE_20;product=minor tail protein;protein_id=AEL19948.1;transl_table=11
+JN256079.1	Genbank	gene	19550	20191	.	+	.	ID=gene-CHARLIE_21;Name=21;gbkey=Gene;gene=21;gene_biotype=protein_coding;locus_tag=CHARLIE_21
+JN256079.1	Genbank	CDS	19550	20191	.	+	0	ID=cds-AEL19949.1;Parent=gene-CHARLIE_21;Dbxref=NCBI_GP:AEL19949.1;Name=AEL19949.1;gbkey=CDS;gene=21;locus_tag=CHARLIE_21;product=hypothetical protein;protein_id=AEL19949.1;transl_table=11
+JN256079.1	Genbank	gene	20220	21437	.	+	.	ID=gene-CHARLIE_22;Name=22;gbkey=Gene;gene=22;gene_biotype=protein_coding;locus_tag=CHARLIE_22
+JN256079.1	Genbank	CDS	20220	21437	.	+	0	ID=cds-AEL19950.1;Parent=gene-CHARLIE_22;Dbxref=NCBI_GP:AEL19950.1;Name=AEL19950.1;gbkey=CDS;gene=22;locus_tag=CHARLIE_22;product=hypothetical protein;protein_id=AEL19950.1;transl_table=11
+JN256079.1	Genbank	gene	21446	21742	.	+	.	ID=gene-CHARLIE_23;Name=23;gbkey=Gene;gene=23;gene_biotype=protein_coding;locus_tag=CHARLIE_23
+JN256079.1	Genbank	CDS	21446	21742	.	+	0	ID=cds-AEL19951.1;Parent=gene-CHARLIE_23;Dbxref=NCBI_GP:AEL19951.1;Name=AEL19951.1;gbkey=CDS;gene=23;locus_tag=CHARLIE_23;product=hypothetical protein;protein_id=AEL19951.1;transl_table=11
+JN256079.1	Genbank	gene	21744	22169	.	+	.	ID=gene-CHARLIE_24;Name=24;gbkey=Gene;gene=24;gene_biotype=protein_coding;locus_tag=CHARLIE_24
+JN256079.1	Genbank	CDS	21744	22169	.	+	0	ID=cds-AEL19952.1;Parent=gene-CHARLIE_24;Dbxref=NCBI_GP:AEL19952.1;Name=AEL19952.1;gbkey=CDS;gene=24;locus_tag=CHARLIE_24;product=hypothetical protein;protein_id=AEL19952.1;transl_table=11
+JN256079.1	Genbank	gene	22169	22348	.	+	.	ID=gene-CHARLIE_25;Name=25;gbkey=Gene;gene=25;gene_biotype=protein_coding;locus_tag=CHARLIE_25
+JN256079.1	Genbank	CDS	22169	22348	.	+	0	ID=cds-AEL19953.1;Parent=gene-CHARLIE_25;Dbxref=NCBI_GP:AEL19953.1;Name=AEL19953.1;gbkey=CDS;gene=25;locus_tag=CHARLIE_25;product=hypothetical protein;protein_id=AEL19953.1;transl_table=11
+JN256079.1	Genbank	gene	22348	22533	.	+	.	ID=gene-CHARLIE_26;Name=26;gbkey=Gene;gene=26;gene_biotype=protein_coding;locus_tag=CHARLIE_26
+JN256079.1	Genbank	CDS	22348	22533	.	+	0	ID=cds-AEL19954.1;Parent=gene-CHARLIE_26;Dbxref=NCBI_GP:AEL19954.1;Name=AEL19954.1;gbkey=CDS;gene=26;locus_tag=CHARLIE_26;product=hypothetical protein;protein_id=AEL19954.1;transl_table=11
+JN256079.1	Genbank	gene	22565	22837	.	+	.	ID=gene-CHARLIE_27;Name=27;gbkey=Gene;gene=27;gene_biotype=protein_coding;locus_tag=CHARLIE_27
+JN256079.1	Genbank	CDS	22565	22837	.	+	0	ID=cds-AEL19955.1;Parent=gene-CHARLIE_27;Dbxref=NCBI_GP:AEL19955.1;Name=AEL19955.1;gbkey=CDS;gene=27;locus_tag=CHARLIE_27;product=hypothetical protein;protein_id=AEL19955.1;transl_table=11
+JN256079.1	Genbank	gene	22834	24342	.	+	.	ID=gene-CHARLIE_28;Name=28;gbkey=Gene;gene=28;gene_biotype=protein_coding;locus_tag=CHARLIE_28
+JN256079.1	Genbank	CDS	22834	24342	.	+	0	ID=cds-AEL19956.1;Parent=gene-CHARLIE_28;Dbxref=NCBI_GP:AEL19956.1;Name=AEL19956.1;Note=LysA;gbkey=CDS;gene=28;locus_tag=CHARLIE_28;product=lysin A;protein_id=AEL19956.1;transl_table=11
+JN256079.1	Genbank	gene	24339	24743	.	+	.	ID=gene-CHARLIE_29;Name=29;gbkey=Gene;gene=29;gene_biotype=protein_coding;locus_tag=CHARLIE_29
+JN256079.1	Genbank	CDS	24339	24743	.	+	0	ID=cds-AEL19957.1;Parent=gene-CHARLIE_29;Dbxref=NCBI_GP:AEL19957.1;Name=AEL19957.1;Note=holin;gbkey=CDS;gene=29;locus_tag=CHARLIE_29;product=holin;protein_id=AEL19957.1;transl_table=11
+JN256079.1	Genbank	gene	24740	25108	.	+	.	ID=gene-CHARLIE_30;Name=30;gbkey=Gene;gene=30;gene_biotype=protein_coding;locus_tag=CHARLIE_30
+JN256079.1	Genbank	CDS	24740	25108	.	+	0	ID=cds-AEL19958.1;Parent=gene-CHARLIE_30;Dbxref=NCBI_GP:AEL19958.1;Name=AEL19958.1;gbkey=CDS;gene=30;locus_tag=CHARLIE_30;product=hypothetical protein;protein_id=AEL19958.1;transl_table=11
+JN256079.1	Genbank	gene	25182	25565	.	-	.	ID=gene-CHARLIE_31;Name=31;gbkey=Gene;gene=31;gene_biotype=protein_coding;locus_tag=CHARLIE_31
+JN256079.1	Genbank	CDS	25182	25565	.	-	0	ID=cds-AEL19991.1;Parent=gene-CHARLIE_31;Dbxref=NCBI_GP:AEL19991.1;Name=AEL19991.1;gbkey=CDS;gene=31;locus_tag=CHARLIE_31;product=hypothetical protein;protein_id=AEL19991.1;transl_table=11
+JN256079.1	Genbank	gene	25674	26039	.	-	.	ID=gene-CHARLIE_32;Name=32;gbkey=Gene;gene=32;gene_biotype=protein_coding;locus_tag=CHARLIE_32
+JN256079.1	Genbank	CDS	25674	26039	.	-	0	ID=cds-AEL19990.1;Parent=gene-CHARLIE_32;Dbxref=NCBI_GP:AEL19990.1;Name=AEL19990.1;gbkey=CDS;gene=32;locus_tag=CHARLIE_32;product=hypothetical protein;protein_id=AEL19990.1;transl_table=11
+JN256079.1	Genbank	gene	26063	26404	.	-	.	ID=gene-CHARLIE_33;Name=33;gbkey=Gene;gene=33;gene_biotype=protein_coding;locus_tag=CHARLIE_33
+JN256079.1	Genbank	CDS	26063	26404	.	-	0	ID=cds-AEL19989.1;Parent=gene-CHARLIE_33;Dbxref=NCBI_GP:AEL19989.1;Name=AEL19989.1;gbkey=CDS;gene=33;locus_tag=CHARLIE_33;product=hypothetical protein;protein_id=AEL19989.1;transl_table=11
+JN256079.1	Genbank	gene	26438	27409	.	-	.	ID=gene-CHARLIE_34;Name=34;gbkey=Gene;gene=34;gene_biotype=protein_coding;locus_tag=CHARLIE_34
+JN256079.1	Genbank	CDS	26438	27409	.	-	0	ID=cds-AEL19988.3;Parent=gene-CHARLIE_34;Dbxref=NCBI_GP:AEL19988.3;Name=AEL19988.3;Note=integrase (Y-int);gbkey=CDS;gene=34;locus_tag=CHARLIE_34;product=tyrosine integrase;protein_id=AEL19988.3;transl_table=11
+JN256079.1	Genbank	gene	27415	27786	.	-	.	ID=gene-CHARLIE_35;Name=35;gbkey=Gene;gene=35;gene_biotype=protein_coding;locus_tag=CHARLIE_35
+JN256079.1	Genbank	CDS	27415	27786	.	-	0	ID=cds-AEL19987.1;Parent=gene-CHARLIE_35;Dbxref=NCBI_GP:AEL19987.1;Name=AEL19987.1;Note=immunity repressor;gbkey=CDS;gene=35;locus_tag=CHARLIE_35;product=immunity repressor;protein_id=AEL19987.1;transl_table=11
+JN256079.1	Genbank	gene	27920	28153	.	+	.	ID=gene-CHARLIE_36;Name=36;gbkey=Gene;gene=36;gene_biotype=protein_coding;locus_tag=CHARLIE_36
+JN256079.1	Genbank	CDS	27920	28153	.	+	0	ID=cds-AEL19959.1;Parent=gene-CHARLIE_36;Dbxref=NCBI_GP:AEL19959.1;Name=AEL19959.1;gbkey=CDS;gene=36;locus_tag=CHARLIE_36;product=hypothetical protein;protein_id=AEL19959.1;transl_table=11
+JN256079.1	Genbank	gene	28150	28536	.	+	.	ID=gene-CHARLIE_37;Name=37;gbkey=Gene;gene=37;gene_biotype=protein_coding;locus_tag=CHARLIE_37
+JN256079.1	Genbank	CDS	28150	28536	.	+	0	ID=cds-AEL19960.1;Parent=gene-CHARLIE_37;Dbxref=NCBI_GP:AEL19960.1;Name=AEL19960.1;gbkey=CDS;gene=37;locus_tag=CHARLIE_37;product=hypothetical protein;protein_id=AEL19960.1;transl_table=11
+JN256079.1	Genbank	gene	28533	28649	.	+	.	ID=gene-CHARLIE_38;Name=38;gbkey=Gene;gene=38;gene_biotype=protein_coding;locus_tag=CHARLIE_38
+JN256079.1	Genbank	CDS	28533	28649	.	+	0	ID=cds-AEL19992.1;Parent=gene-CHARLIE_38;Dbxref=NCBI_GP:AEL19992.1;Name=AEL19992.1;gbkey=CDS;gene=38;locus_tag=CHARLIE_38;product=hypothetical protein;protein_id=AEL19992.1;transl_table=11
+JN256079.1	Genbank	gene	28646	29074	.	+	.	ID=gene-CHARLIE_39;Name=39;gbkey=Gene;gene=39;gene_biotype=protein_coding;locus_tag=CHARLIE_39
+JN256079.1	Genbank	CDS	28646	29074	.	+	0	ID=cds-AEL19961.1;Parent=gene-CHARLIE_39;Dbxref=NCBI_GP:AEL19961.1;Name=AEL19961.1;gbkey=CDS;gene=39;locus_tag=CHARLIE_39;product=hypothetical protein;protein_id=AEL19961.1;transl_table=11
+JN256079.1	Genbank	gene	29132	29386	.	+	.	ID=gene-CHARLIE_40;Name=40;gbkey=Gene;gene=40;gene_biotype=protein_coding;locus_tag=CHARLIE_40
+JN256079.1	Genbank	CDS	29132	29386	.	+	0	ID=cds-AEL19962.1;Parent=gene-CHARLIE_40;Dbxref=NCBI_GP:AEL19962.1;Name=AEL19962.1;gbkey=CDS;gene=40;locus_tag=CHARLIE_40;product=hypothetical protein;protein_id=AEL19962.1;transl_table=11
+JN256079.1	Genbank	gene	29383	29745	.	+	.	ID=gene-CHARLIE_41;Name=41;gbkey=Gene;gene=41;gene_biotype=protein_coding;locus_tag=CHARLIE_41
+JN256079.1	Genbank	CDS	29383	29745	.	+	0	ID=cds-AEL19963.1;Parent=gene-CHARLIE_41;Dbxref=NCBI_GP:AEL19963.1;Name=AEL19963.1;gbkey=CDS;gene=41;locus_tag=CHARLIE_41;product=hypothetical protein;protein_id=AEL19963.1;transl_table=11
+JN256079.1	Genbank	gene	29742	30068	.	+	.	ID=gene-CHARLIE_42;Name=42;gbkey=Gene;gene=42;gene_biotype=protein_coding;locus_tag=CHARLIE_42
+JN256079.1	Genbank	CDS	29742	30068	.	+	0	ID=cds-AEL19964.1;Parent=gene-CHARLIE_42;Dbxref=NCBI_GP:AEL19964.1;Name=AEL19964.1;gbkey=CDS;gene=42;locus_tag=CHARLIE_42;product=hypothetical protein;protein_id=AEL19964.1;transl_table=11
+JN256079.1	Genbank	gene	30065	30220	.	+	.	ID=gene-CHARLIE_43;Name=43;gbkey=Gene;gene=43;gene_biotype=protein_coding;locus_tag=CHARLIE_43
+JN256079.1	Genbank	CDS	30065	30220	.	+	0	ID=cds-AEL19965.1;Parent=gene-CHARLIE_43;Dbxref=NCBI_GP:AEL19965.1;Name=AEL19965.1;gbkey=CDS;gene=43;locus_tag=CHARLIE_43;product=hypothetical protein;protein_id=AEL19965.1;transl_table=11
+JN256079.1	Genbank	gene	30217	30516	.	+	.	ID=gene-CHARLIE_44;Name=44;gbkey=Gene;gene=44;gene_biotype=protein_coding;locus_tag=CHARLIE_44
+JN256079.1	Genbank	CDS	30217	30516	.	+	0	ID=cds-AEL19966.1;Parent=gene-CHARLIE_44;Dbxref=NCBI_GP:AEL19966.1;Name=AEL19966.1;gbkey=CDS;gene=44;locus_tag=CHARLIE_44;product=hypothetical protein;protein_id=AEL19966.1;transl_table=11
+JN256079.1	Genbank	gene	30513	30647	.	+	.	ID=gene-CHARLIE_45;Name=45;gbkey=Gene;gene=45;gene_biotype=protein_coding;locus_tag=CHARLIE_45
+JN256079.1	Genbank	CDS	30513	30647	.	+	0	ID=cds-AEL19967.1;Parent=gene-CHARLIE_45;Dbxref=NCBI_GP:AEL19967.1;Name=AEL19967.1;gbkey=CDS;gene=45;locus_tag=CHARLIE_45;product=hypothetical protein;protein_id=AEL19967.1;transl_table=11
+JN256079.1	Genbank	gene	30644	30997	.	+	.	ID=gene-CHARLIE_46;Name=46;gbkey=Gene;gene=46;gene_biotype=protein_coding;locus_tag=CHARLIE_46
+JN256079.1	Genbank	CDS	30644	30997	.	+	0	ID=cds-AEL19968.1;Parent=gene-CHARLIE_46;Dbxref=NCBI_GP:AEL19968.1;Name=AEL19968.1;gbkey=CDS;gene=46;locus_tag=CHARLIE_46;product=hypothetical protein;protein_id=AEL19968.1;transl_table=11
+JN256079.1	Genbank	gene	30994	31923	.	+	.	ID=gene-CHARLIE_47;Name=47;gbkey=Gene;gene=47;gene_biotype=protein_coding;locus_tag=CHARLIE_47
+JN256079.1	Genbank	CDS	30994	31923	.	+	0	ID=cds-AEL19969.1;Parent=gene-CHARLIE_47;Dbxref=NCBI_GP:AEL19969.1;Name=AEL19969.1;Note=RecE;gbkey=CDS;gene=47;locus_tag=CHARLIE_47;product=RecE-like exonuclease;protein_id=AEL19969.1;transl_table=11
+JN256079.1	Genbank	gene	31920	32912	.	+	.	ID=gene-CHARLIE_48;Name=48;gbkey=Gene;gene=48;gene_biotype=protein_coding;locus_tag=CHARLIE_48
+JN256079.1	Genbank	CDS	31920	32912	.	+	0	ID=cds-AEL19970.1;Parent=gene-CHARLIE_48;Dbxref=NCBI_GP:AEL19970.1;Name=AEL19970.1;Note=RecT;gbkey=CDS;gene=48;locus_tag=CHARLIE_48;product=RecT-like ssDNA binding protein;protein_id=AEL19970.1;transl_table=11
+JN256079.1	Genbank	gene	32909	33271	.	+	.	ID=gene-CHARLIE_49;Name=49;gbkey=Gene;gene=49;gene_biotype=protein_coding;locus_tag=CHARLIE_49
+JN256079.1	Genbank	CDS	32909	33271	.	+	0	ID=cds-AEL19971.1;Parent=gene-CHARLIE_49;Dbxref=NCBI_GP:AEL19971.1;Name=AEL19971.1;gbkey=CDS;gene=49;locus_tag=CHARLIE_49;product=hypothetical protein;protein_id=AEL19971.1;transl_table=11
+JN256079.1	Genbank	gene	33268	33660	.	+	.	ID=gene-CHARLIE_50;Name=50;gbkey=Gene;gene=50;gene_biotype=protein_coding;locus_tag=CHARLIE_50
+JN256079.1	Genbank	CDS	33268	33660	.	+	0	ID=cds-AEL19972.1;Parent=gene-CHARLIE_50;Dbxref=NCBI_GP:AEL19972.1;Name=AEL19972.1;gbkey=CDS;gene=50;locus_tag=CHARLIE_50;product=hypothetical protein;protein_id=AEL19972.1;transl_table=11
+JN256079.1	Genbank	gene	33657	33905	.	+	.	ID=gene-CHARLIE_51;Name=51;gbkey=Gene;gene=51;gene_biotype=protein_coding;locus_tag=CHARLIE_51
+JN256079.1	Genbank	CDS	33657	33905	.	+	0	ID=cds-AEL19973.1;Parent=gene-CHARLIE_51;Dbxref=NCBI_GP:AEL19973.1;Name=AEL19973.1;Note=NrdH;gbkey=CDS;gene=51;locus_tag=CHARLIE_51;product=NrdH-like glutaredoxin;protein_id=AEL19973.1;transl_table=11
+JN256079.1	Genbank	gene	33902	34117	.	+	.	ID=gene-CHARLIE_52;Name=52;gbkey=Gene;gene=52;gene_biotype=protein_coding;locus_tag=CHARLIE_52
+JN256079.1	Genbank	CDS	33902	34117	.	+	0	ID=cds-AEL19974.1;Parent=gene-CHARLIE_52;Dbxref=NCBI_GP:AEL19974.1;Name=AEL19974.1;gbkey=CDS;gene=52;locus_tag=CHARLIE_52;product=hypothetical protein;protein_id=AEL19974.1;transl_table=11
+JN256079.1	Genbank	gene	34114	34401	.	+	.	ID=gene-CHARLIE_53;Name=53;gbkey=Gene;gene=53;gene_biotype=protein_coding;locus_tag=CHARLIE_53
+JN256079.1	Genbank	CDS	34114	34401	.	+	0	ID=cds-AEL19975.1;Parent=gene-CHARLIE_53;Dbxref=NCBI_GP:AEL19975.1;Name=AEL19975.1;gbkey=CDS;gene=53;locus_tag=CHARLIE_53;product=hypothetical protein;protein_id=AEL19975.1;transl_table=11
+JN256079.1	Genbank	gene	34401	34721	.	+	.	ID=gene-CHARLIE_54;Name=54;gbkey=Gene;gene=54;gene_biotype=protein_coding;locus_tag=CHARLIE_54
+JN256079.1	Genbank	CDS	34401	34721	.	+	0	ID=cds-AEL19976.1;Parent=gene-CHARLIE_54;Dbxref=NCBI_GP:AEL19976.1;Name=AEL19976.1;Note=HTH DNA binding domain;gbkey=CDS;gene=54;locus_tag=CHARLIE_54;product=helix-turn-helix DNA binding protein;protein_id=AEL19976.1;transl_table=11
+JN256079.1	Genbank	gene	34718	34936	.	+	.	ID=gene-CHARLIE_55;Name=55;gbkey=Gene;gene=55;gene_biotype=protein_coding;locus_tag=CHARLIE_55
+JN256079.1	Genbank	CDS	34718	34936	.	+	0	ID=cds-AEL19977.1;Parent=gene-CHARLIE_55;Dbxref=NCBI_GP:AEL19977.1;Name=AEL19977.1;gbkey=CDS;gene=55;locus_tag=CHARLIE_55;product=hypothetical protein;protein_id=AEL19977.1;transl_table=11
+JN256079.1	Genbank	gene	34933	37557	.	+	.	ID=gene-CHARLIE_56;Name=56;gbkey=Gene;gene=56;gene_biotype=protein_coding;locus_tag=CHARLIE_56
+JN256079.1	Genbank	CDS	34933	37557	.	+	0	ID=cds-AEL19978.1;Parent=gene-CHARLIE_56;Dbxref=NCBI_GP:AEL19978.1;Name=AEL19978.1;Note=DNA methylase;gbkey=CDS;gene=56;locus_tag=CHARLIE_56;product=DNA methylase;protein_id=AEL19978.1;transl_table=11
+JN256079.1	Genbank	gene	37679	38128	.	+	.	ID=gene-CHARLIE_57;Name=57;gbkey=Gene;gene=57;gene_biotype=protein_coding;locus_tag=CHARLIE_57
+JN256079.1	Genbank	CDS	37679	38128	.	+	0	ID=cds-AEL19979.1;Parent=gene-CHARLIE_57;Dbxref=NCBI_GP:AEL19979.1;Name=AEL19979.1;gbkey=CDS;gene=57;locus_tag=CHARLIE_57;product=hypothetical protein;protein_id=AEL19979.1;transl_table=11
+JN256079.1	Genbank	gene	38128	38529	.	+	.	ID=gene-CHARLIE_58;Name=58;gbkey=Gene;gene=58;gene_biotype=protein_coding;locus_tag=CHARLIE_58
+JN256079.1	Genbank	CDS	38128	38529	.	+	0	ID=cds-AEL19980.1;Parent=gene-CHARLIE_58;Dbxref=NCBI_GP:AEL19980.1;Name=AEL19980.1;gbkey=CDS;gene=58;locus_tag=CHARLIE_58;product=hypothetical protein;protein_id=AEL19980.1;transl_table=11
+JN256079.1	Genbank	gene	38529	38672	.	+	.	ID=gene-CHARLIE_59;Name=59;gbkey=Gene;gene=59;gene_biotype=protein_coding;locus_tag=CHARLIE_59
+JN256079.1	Genbank	CDS	38529	38672	.	+	0	ID=cds-AEL19981.1;Parent=gene-CHARLIE_59;Dbxref=NCBI_GP:AEL19981.1;Name=AEL19981.1;gbkey=CDS;gene=59;locus_tag=CHARLIE_59;product=hypothetical protein;protein_id=AEL19981.1;transl_table=11
+JN256079.1	Genbank	gene	38669	38830	.	+	.	ID=gene-CHARLIE_60;Name=60;gbkey=Gene;gene=60;gene_biotype=protein_coding;locus_tag=CHARLIE_60
+JN256079.1	Genbank	CDS	38669	38830	.	+	0	ID=cds-AEL19993.1;Parent=gene-CHARLIE_60;Dbxref=NCBI_GP:AEL19993.1;Name=AEL19993.1;gbkey=CDS;gene=60;locus_tag=CHARLIE_60;product=hypothetical protein;protein_id=AEL19993.1;transl_table=11
+JN256079.1	Genbank	gene	38830	39723	.	+	.	ID=gene-CHARLIE_61;Name=61;gbkey=Gene;gene=61;gene_biotype=protein_coding;locus_tag=CHARLIE_61
+JN256079.1	Genbank	CDS	38830	39723	.	+	0	ID=cds-AEL19994.1;Parent=gene-CHARLIE_61;Dbxref=NCBI_GP:AEL19994.1;Name=AEL19994.1;gbkey=CDS;gene=61;locus_tag=CHARLIE_61;product=hypothetical protein;protein_id=AEL19994.1;transl_table=11
+JN256079.1	Genbank	gene	39720	40322	.	+	.	ID=gene-CHARLIE_62;Name=62;gbkey=Gene;gene=62;gene_biotype=protein_coding;locus_tag=CHARLIE_62
+JN256079.1	Genbank	CDS	39720	40322	.	+	0	ID=cds-AEL19982.1;Parent=gene-CHARLIE_62;Dbxref=NCBI_GP:AEL19982.1;Name=AEL19982.1;gbkey=CDS;gene=62;locus_tag=CHARLIE_62;product=hypothetical protein;protein_id=AEL19982.1;transl_table=11
+JN256079.1	Genbank	gene	40315	40896	.	+	.	ID=gene-CHARLIE_63;Name=63;gbkey=Gene;gene=63;gene_biotype=protein_coding;locus_tag=CHARLIE_63
+JN256079.1	Genbank	CDS	40315	40896	.	+	0	ID=cds-AEL19983.1;Parent=gene-CHARLIE_63;Dbxref=NCBI_GP:AEL19983.1;Name=AEL19983.1;gbkey=CDS;gene=63;locus_tag=CHARLIE_63;product=hypothetical protein;protein_id=AEL19983.1;transl_table=11
+JN256079.1	Genbank	gene	40893	41558	.	+	.	ID=gene-CHARLIE_64;Name=64;gbkey=Gene;gene=64;gene_biotype=protein_coding;locus_tag=CHARLIE_64
+JN256079.1	Genbank	CDS	40893	41558	.	+	0	ID=cds-AEL19984.1;Parent=gene-CHARLIE_64;Dbxref=NCBI_GP:AEL19984.1;Name=AEL19984.1;gbkey=CDS;gene=64;locus_tag=CHARLIE_64;product=hypothetical protein;protein_id=AEL19984.1;transl_table=11
+JN256079.1	Genbank	gene	41702	41926	.	+	.	ID=gene-CHARLIE_65;Name=65;gbkey=Gene;gene=65;gene_biotype=protein_coding;locus_tag=CHARLIE_65
+JN256079.1	Genbank	CDS	41702	41926	.	+	0	ID=cds-AEL19995.1;Parent=gene-CHARLIE_65;Dbxref=NCBI_GP:AEL19995.1;Name=AEL19995.1;gbkey=CDS;gene=65;locus_tag=CHARLIE_65;product=hypothetical protein;protein_id=AEL19995.1;transl_table=11
+JN256079.1	Genbank	gene	41866	42321	.	+	.	ID=gene-CHARLIE_66;Name=66;gbkey=Gene;gene=66;gene_biotype=protein_coding;locus_tag=CHARLIE_66
+JN256079.1	Genbank	CDS	41866	42321	.	+	0	ID=cds-AEL19985.1;Parent=gene-CHARLIE_66;Dbxref=NCBI_GP:AEL19985.1;Name=AEL19985.1;gbkey=CDS;gene=66;locus_tag=CHARLIE_66;product=hypothetical protein;protein_id=AEL19985.1;transl_table=11
+JN256079.1	Genbank	gene	42318	42563	.	+	.	ID=gene-CHARLIE_67;Name=67;gbkey=Gene;gene=67;gene_biotype=protein_coding;locus_tag=CHARLIE_67
+JN256079.1	Genbank	CDS	42318	42563	.	+	0	ID=cds-AEL19986.1;Parent=gene-CHARLIE_67;Dbxref=NCBI_GP:AEL19986.1;Name=AEL19986.1;Note=similar to major facilitator transporter of Mycobacterium abscessus ATCC 19977;gbkey=CDS;gene=67;locus_tag=CHARLIE_67;product=hypothetical protein;protein_id=AEL19986.1;transl_table=11
+JN256079.1	Genbank	gene	42541	42849	.	+	.	ID=gene-CHARLIE_69;Name=69;gbkey=Gene;gene=69;gene_biotype=protein_coding;locus_tag=CHARLIE_69
+JN256079.1	Genbank	CDS	42541	42849	.	+	0	ID=cds-AEL19996.2;Parent=gene-CHARLIE_69;Dbxref=NCBI_GP:AEL19996.2;Name=AEL19996.2;gbkey=CDS;gene=69;locus_tag=CHARLIE_69;product=HNH endonuclease;protein_id=AEL19996.2;transl_table=11
+
