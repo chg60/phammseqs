@@ -1,2 +1,1 @@
-biopython~=1.78
-setuptools~=58.0.4
+biopython>=1.77
