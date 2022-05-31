@@ -15,13 +15,6 @@ class MyTestCase(unittest.TestCase):
         with self.subTest():
             self.assertGreater(stdout, "")
 
-    def test_valid_command_bad_args(self):
-        """Test a command that should work on any macOS or Linux system,
-        but give it bad arguments."""
-        command = f"uname -fake"
-        with self.assertRaises(FileNotFoundError):
-            run(command)
-
     def test_invalid_command_bad(self):
         """Test a command that should not work on any macOS or Linux system."""
         command = f"fake_command --fake-argument"
