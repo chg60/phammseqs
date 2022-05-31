@@ -99,7 +99,10 @@ def analyze_pangenome(phams, infiles, outdir):
                 pham_data[phamid] = {name: geneids}
 
     # Analyze pangenome
-    core, soft, shell, cloud = list(), list(), list(), list()
+    core, core_file = list(), outdir.joinpath("core_genes.txt")
+    soft, soft_file = list(), outdir.joinpath("soft_core_genes.txt")
+    shell, shell_file = list(), outdir.joinpath("shell_genes.txt")
+    cloud, cloud_file = list(), outdir.joinpath("cloud_genes.txt")
     strain_rows, roary_rows = list(), list()
 
     for i, pham in enumerate(phams):
@@ -141,6 +144,22 @@ def analyze_pangenome(phams, infiles, outdir):
         summary = summary_template.format(len(core), len(soft), len(shell),
                                           len(cloud), len(phams))
         summary_writer.write(summary)
+
+    with open(core_file, "w") as core_writer:
+        for phamid in core:
+            core_writer.write(f"{phamid}\n")
+
+    with open(soft_file, "w") as soft_writer:
+        for phamid in soft:
+            soft_writer.write(f"{phamid}\n")
+
+    with open(shell_file, "w") as shell_writer:
+        for phamid in shell:
+            shell_writer.write(f"{phamid}\n")
+
+    with open(cloud_file, "w") as cloud_writer:
+        for phamid in cloud:
+            cloud_writer.write(f"{phamid}\n")
 
     roary_file = outdir.joinpath("gene_presence_absence.csv")
     with open(roary_file, "w") as roary_writer:
