@@ -27,6 +27,21 @@ def get_mmseqs_version():
         return None
 
 
+def version_ok():
+    """Check that local MMseqs2 version matches the expected version.
+
+    :return: ok
+    """
+    ok, mmseqs_version = True, get_mmseqs_version()
+
+    if not mmseqs_version:
+        ok = False
+    elif mmseqs_version != VERSION:
+        ok = False
+
+    return ok
+
+
 def createdb(fasta, seq_db, debug=False):
     """Run 'mmseqs createdb' command.
 

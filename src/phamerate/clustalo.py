@@ -26,6 +26,22 @@ def get_clustalo_version():
         return None
 
 
+def version_ok():
+    """Check that local Clustal Omega version matches the expected
+    version.
+
+    :return: ok
+    """
+    ok, clustalo_version = True, get_clustalo_version()
+
+    if not clustalo_version:
+        ok = False
+    elif clustalo_version != VERSION:
+        ok = False
+
+    return ok
+
+
 def run_clustalo(infile, outfile, threads=1, verbose=False):
     """Use clustalo to generate an MSA from the sequences in `infile`
     and store the results in `outfile`.

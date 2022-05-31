@@ -10,18 +10,6 @@ from phamerate import cli, clustalo, fileio, mmseqs
 from phamerate import multiprocess as mp
 from phamerate.pangenome import analyze_pangenome
 
-# Check MMseqs2 version - exit if not found or wrong version
-mmseqs_version = mmseqs.get_mmseqs_version()
-if not mmseqs_version:
-    print(f"\nMMseqs2 not found - please install version "
-          f"{mmseqs.VERSION} and try again\n")
-    sys.exit(1)
-elif mmseqs_version != mmseqs.VERSION:
-    print(f"\nFound wrong version of MMseqs2")
-    print(f"Installed version: {mmseqs_version}")
-    print(f"Required version:  {mmseqs.VERSION}\n")
-    sys.exit(1)
-
 
 def create_database(input_files):
     """Parse the input file(s) into a SequenceDB object.
@@ -190,7 +178,7 @@ def assemble_phams(db, seq_params, hmm_params=None, cpus=1,
         if debug:
             dst = pathlib.Path().home().joinpath(f"{tmp_dir.name}")
             shutil.copytree(src=tmp_dir, dst=dst)
-            print(f"Temporary files are at {dst}")
+            print(f"Temporary files moved to {dst}")
         # Re-raise the error
         raise err
     finally:
@@ -270,40 +258,6 @@ def align_phams(phams, fasta_dir, align_dir, cpus=1, verbose=False):
     return fasta_paths, align_paths
 
 
-def phamerate(infiles, seq_params, hmm_params, cpus=1, verbose=False,
-              debug=False):
-    """Perform pham assembly with the sequences found in `infiles` and
-    parameters specified in `seq_params` and `hmm_params` and results
-    written to `outdir`.
-
-    :param infiles: input files containing sequences to cluster
-    :type infiles: list[pathlib.Path]
-    :param seq_params: sequence-sequence clustering parameters
-    :type seq_params: dict
-    :param hmm_params: profile-consensus clustering parameters
-    :type hmm_params: dict
-    :param cpus: number of CPU cores to use
-    :type cpus: int
-    :param verbose: print progress messages to the console
-    :type verbose: bool
-    :param debug: print debug messages to the console
-    :type debug: bool
-    """
-    if verbose:
-        print("Parsing protein sequences from input files...")
-
-    database = create_database(infiles)
-
-    if verbose:
-        print(f"Found {len(database)} translations in {len(infiles)} files...")
-
-    phams = assemble_phams(db=database, seq_params=seq_params,
-                           hmm_params=hmm_params, cpus=cpus,
-                           verbose=verbose, debug=debug)
-
-    return phams
-
-
 def main():
     """Commandline entry point for this module."""
     # Invoke the help menu if phamerate was run_clustalo without args
@@ -323,19 +277,17 @@ def main():
     do_align = args.align_phams
     do_pangenome = args.pangenome
 
-    # If user specified align, check for compatible Clustal Omega version
-    if do_align:
-        # Always warn regardless of verbose flag
-        clustalo_version = clustalo.get_clustalo_version()
-        if not clustalo_version:
-            print(f"\nClustal Omega not found - pham alignments disabled...\n")
-            do_align = False
-        elif clustalo_version != clustalo.VERSION:
-            print(f"\nFound wrong version of Clustal Omega")
-            print(f"Installed version: {clustalo_version}")
-            print(f"Required version: {clustalo.VERSION}")
-            print(f"Pham alignments disabled...\n")
-            do_align = False
+    # Check for compatible MMseqs2 version - exit if not found
+    if not mmseqs.version_ok():
+        print(f"\nWrong or missing MMseqs2 dependency - please install version "
+              f"{mmseqs.VERSION} and try again\n")
+        sys.exit(1)
+
+    # Check for compatible Clustal Omega version - disable align if not found
+    if do_align and not clustalo.version_ok():
+        print(f"\nWrong or missing Clustal Omega dependency - please install "
+              f"version {clustalo.VERSION} to enable pham alignments...\n")
+        do_align = False
 
     # Set up MMseqs2 parameters
     seq_params = {"identity":         args.identity,
@@ -355,8 +307,17 @@ def main():
                       "cluster_mode":  args.hmm_cluster_mode,
                       "cluster_steps": args.hmm_cluster_steps}
 
-    phams = phamerate(infiles, seq_params, hmm_params, cpus=cpus,
-                      verbose=verbose, debug=debug)
+    if verbose:
+        print("Parsing protein sequences from input files...")
+
+    database = create_database(infiles)
+
+    if verbose:
+        print(f"Found {len(database)} translations in {len(infiles)} files...")
+
+    phams = assemble_phams(db=database, seq_params=seq_params,
+                           hmm_params=hmm_params, cpus=cpus,
+                           verbose=verbose, debug=debug)
 
     if verbose:
         print(f"Found {len(phams)} phamilies in dataset...")
