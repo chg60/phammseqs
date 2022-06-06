@@ -10,6 +10,21 @@ The easiest way to install the phamerate package and its dependencies is through
     conda create -n phamerate-env python=3.9 -y && conda activate phamerate-env
     conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
     pip3 install phamerate 
+    
+# Conda installation (Apple Silicon)
+
+Macintosh computers purchased in the last couple of years no longer have Intel CPUs, instead sporting some flavor of Apple 
+Silicon. These processors have a different architecture (arm64) that is not natively compatible with most of the recipes 
+in the bioconda or conda-forge channels. We can run these programs using Apple's Rosetta2 emulator by modifying the conda
+installation [as indicated here](https://github.com/Haydnspass/miniforge#rosetta-on-mac-with-apple-silicon-hardware).
+
+    CONDA_SUBDIR=osx-64 conda create -n phamerate-env python=3.9 -y && conda activate phamerate-env
+    conda env config vars set CONDA_SUBDIR=osx-64
+    conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
+    pip3 install phamerate
+    
+Using either Conda approach will require you to activate the environment before using `phamerate` (e.g., 
+`conda activate phamerate-env`)
 
 # Manual installation
 
