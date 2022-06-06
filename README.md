@@ -22,9 +22,6 @@ installation [as indicated here](https://github.com/Haydnspass/miniforge#rosetta
     conda env config vars set CONDA_SUBDIR=osx-64
     conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
     pip3 install phamerate
-    
-Using either Conda approach will require you to activate the environment before using `phamerate` (e.g., 
-`conda activate phamerate-env`)
 
 # Manual installation
 
@@ -41,7 +38,12 @@ Once all that is done, you can obtain the phamerate package from PyPI using pip:
 
 # Basic Usage
 
-With all dependencies met, you can run phamerate by invoking it with the `-h` option (to print the help menu):
+If you installed phamerate and its dependencies using either of the Conda approaches, you will need to activate the
+environment before using `phamerate` (substitute `phamerate-env` with whatever you named the environment):
+
+    conda activate phamerate-env
+
+You can invoke `phamerate` with the `-h` option to print the help menu:
 
     phamerate -h
 
