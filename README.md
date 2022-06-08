@@ -22,6 +22,11 @@ installation [as indicated here](https://github.com/Haydnspass/miniforge#rosetta
     conda env config vars set CONDA_SUBDIR=osx-64
     conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
     pip3 install phamerate
+    
+After the second command you may be prompted to reactivate the environment for changes to take effect. This is easily achieved
+by running this sequence of commands before you install any packages into the environment:
+
+    conda deactivate && conda activate phamerate-env
 
 # Manual installation
 
