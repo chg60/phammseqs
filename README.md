@@ -34,7 +34,7 @@ If you don't have some flavor of conda available (and don't want to install it..
 [here](https://github.com/soedinglab/mmseqs2#installation) to manually install `mmseqs`. An optional dependency,
 `clustalo` can be manually installed following the instructions [here](http://www.clustal.org/omega/). 
 Most modern operating systems also ship with Python3, the programming language used to develop this package, and 
-required to run_clustalo it. However, if your system does not have Python 3.7 or higher, you will need to obtain it 
+required to run it. However, if your system does not have Python 3.7 or higher, you will need to obtain it 
 [here](https://www.python.org/downloads/).
 
 Once all that is done, you can obtain the phamerate package from PyPI using pip:
