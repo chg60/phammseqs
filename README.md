@@ -5,11 +5,11 @@ been carefully tuned for rapid, accurate exploration of the bacteriophage protei
 
 # Conda installation
 
-The easiest way to install the phamerate package and its dependencies is through the Anaconda/Miniconda package manager: 
+The easiest way to install the phammseqs package and its dependencies is through the Anaconda/Miniconda package manager: 
 
-    conda create -n phamerate-env python=3.9 -y && conda activate phamerate-env
+    conda create -n phammseqs-env python=3.9 -y && conda activate phammseqs-env
     conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
-    pip3 install phamerate 
+    pip3 install phammseqs 
     
 # Conda installation (Apple Silicon)
 
@@ -18,15 +18,15 @@ Silicon. These processors have a different architecture (arm64) that is not nati
 in the bioconda or conda-forge channels. We can run these programs using Apple's Rosetta2 emulator by modifying the conda
 installation [as indicated here](https://github.com/Haydnspass/miniforge#rosetta-on-mac-with-apple-silicon-hardware).
 
-    CONDA_SUBDIR=osx-64 conda create -n phamerate-env python=3.9 -y && conda activate phamerate-env
+    CONDA_SUBDIR=osx-64 conda create -n phammseqs-env python=3.9 -y && conda activate phammseqs-env
     conda env config vars set CONDA_SUBDIR=osx-64
     conda install -c bioconda -c conda-forge mmseqs2=13.45111 clustalo -y
-    pip3 install phamerate
+    pip3 install phammseqs
     
 After the second command you may be prompted to reactivate the environment for changes to take effect. This is easily achieved
 by running this sequence of commands before you install any packages into the environment:
 
-    conda deactivate && conda activate phamerate-env
+    conda deactivate && conda activate phammseqs-env
 
 # Manual installation
 
@@ -37,24 +37,24 @@ Most modern operating systems also ship with Python3, the programming language u
 required to run it. However, if your system does not have Python 3.7 or higher, you will need to obtain it 
 [here](https://www.python.org/downloads/).
 
-Once all that is done, you can obtain the phamerate package from PyPI using pip:
+Once all that is done, you can obtain the phammseqs package from PyPI using pip:
 
-    pip3 install phamerate
+    pip3 install phammseqs
 
-# Basic Usage
+# Using PhaMMseqs at the command line
 
-If you installed phamerate and its dependencies using either of the Conda approaches, you will need to activate the
-environment before using `phamerate` (substitute `phamerate-env` with whatever you named the environment):
+If you installed phammseqs and its dependencies using either of the Conda approaches, you will need to activate the
+environment before using `phammseqs` (substitute `phammseqs-env` with whatever you named the environment):
 
-    conda activate phamerate-env
+    conda activate phammseqs-env
 
-You can invoke `phamerate` with the `-h` option to print the help menu:
+You can invoke `phammseqs` with the `-h` option to print the help menu:
 
-    phamerate -h
+    phammseqs -h
 
 Which should print something like:
 
-    usage: phamerate [-h] [--identity] [--coverage] [--evalue] [--sensitivity] [--cluster-mode] [--cluster-steps] 
+    usage: phammseqs [-h] [--identity] [--coverage] [--evalue] [--sensitivity] [--cluster-mode] [--cluster-steps] 
     [--hmm-identity] [--hmm-coverage] [--hmm-evalue] [--hmm-sensitivity] [--hmm-cluster-mode] [--hmm-cluster-steps] 
     [--skip-hmm] [-v] [-d] [-a] [-p] [-c CPUS] [-o OUTDIR] infile [infile ...]
 
@@ -94,35 +94,35 @@ Which should print something like:
 
 The only required argument is the path to a single multiple-FASTA file, for example:
 
-    phamerate my_genes.faa
+    phammseqs my_genes.faa
 
 This will perform pham assembly, and write each resultant pham to a FASTA file found in a new folder in the working 
-directory called `phamerate__[day]_[month]_[year]` (this will resolve to the date on which pham assembly was performed).
+directory called `phammseqs__[day]_[month]_[year]` (this will resolve to the date on which pham assembly was performed).
 
 An alternate output path can be specified with the `-o` argument:
 
-    phamerate my_genes.faa -o ~/Desktop/phamerate_results
+    phammseqs my_genes.faa -o ~/Desktop/phammseqs_results
 
-This will do the same as before, the output files will be now found in `~/Desktop/phamerate_results` rather than the
+This will do the same as before, the output files will be now found in `~/Desktop/phammseqs_results` rather than the
 directory the program was invoked from.
 
 If your dataset is a pangenome or metagenome with many FASTA files (e.g. one file per genome), you can specify multiple
 input files by simply putting their paths one after the next:
 
-    phamerate genome1.faa genome2.faa genome3.faa ... genomeN.faa -o ~/Desktop/phamerate_results
+    phammseqs genome1.faa genome2.faa genome3.faa ... genomeN.faa -o ~/Desktop/phammseqs_results
 
 or if all these genomes are in the same directory:
 
-    phamerate /path/to/genome/fastas/*.faa -o ~/Desktop/phamerate_results
+    phammseqs /path/to/genome/fastas/*.faa -o ~/Desktop/phammseqs_results
     
-Each input file is treated separately, so you can even mix FASTA and Genbank flatfiles in the same run!
+Each input file is treated separately, so you can even mix FASTA and Genbank flatfiles in the same run:
 
-    phamerate /path/to/genome/fastas/*.faa /path/to/genome/genbanks/*.gbk -o ~/Desktop/phamerate_results
+    phammseqs /path/to/genome/fastas/*.faa /path/to/genome/genbanks/*.gbk -o ~/Desktop/phammseqs_results
 
-If you want to produce a multiple sequence alignment for each pham, the phamerate program can accomplish this using 
+If you want to produce a multiple sequence alignment for each pham, the phammseqs program can accomplish this using 
 a local copy of the program `clustalo` - simply use the `-a`/`--align-phams` argument:
 
-    phamerate my_genes.faa -o ~/Desktop/phamerate_results -a -v
+    phammseqs my_genes.faa -o ~/Desktop/phammseqs_results -a -v
 
 The `-v` argument will make the program print progress messages to the console as it runs, for example:
 
@@ -141,28 +141,80 @@ The `-v` argument will make the program print progress messages to the console a
 
 This may be especially helpful on very large or highly diverse datasets.
 
-# Can I use it as a stand-in for my favorite pan-genome analysis tool?
+# Using PhaMMseqs as a library
 
-For folks with large bacterial pan-genomes to analyze, you may find that the BLAST-based method used by 
-[Roary](https://github.com/sanger-pathogens/Roary) or other such tools is too slow for your needs; in this case, 
-phamerate may be able to help. By raising the `--identity` threshold (for example to the 95% identity threshold used 
-by Roary) and supplying the `--skip-hmm` argument (no searching for remote homologs) and the `-p` argument to generate 
-some tabular output files very similar to those produced by Roary:
+For most simple use cases, the following import statement should suffice.
 
-    phamerate ~/Desktop/Actino_phages/*.faa -o ~/Desktop/phamerate_results -a -v --identity 95 --skip-hmm -p
+    from phammseqs import *
 
-Which as it runs and completes steps should print something like:
+This will import two classes and two high-level functions into the namespace: `SequenceDB`, `Pham`, `assemble_phams`, 
+and `merge_seq_hmm_phams`. Initialize a `SequenceDB` to begin:
 
-    Parsing protein sequences from input files...
-    Found XXXXXX translations in YYY files...
-    Creating MMseqs2 database...
-    Performing sequence-sequence clustering...
-    Parsing sequence-sequence phams...
-    Found ZZZZ phamilies in dataset...
-    Computing phamily alignments with Clustal Omega...
-    [##################################################] 100%
-    Performing basic pan/meta-genome analyses...
-    Done!
+    db = SequenceDB()
 
-Be forewarned that at present, phamerate does NOT make any effort to split paralogs out of gene phamilies, so if that 
-is something that matters for your analyses you'll need to find another way to split over-clustered phams.
+Load the contents of a FASTA file into a SequenceDB instance like this:
+
+    db.load("/path/to/file.fasta")
+
+The FASTA parser does not care if your file is in 2-line or multi-line/wrapped FASTA format (or mixed). So long as the
+file does not contain duplicate headers, the `load()` function should work. If your FASTA file contains duplicate 
+headers, a `ValueError` will be raised, so this alternate database load strategy can be used:
+
+    from phammseqs.fileio import read_fasta
+    
+    for header, sequence in read_fasta("/path/to/file.fasta"):
+        try:
+            db.add_gene(header, sequence)
+        except ValueError as err:
+            print(err)      # will print the error message but keep adding genes to db
+
+The size of the database can be queried two different ways:
+
+    len(db)                 # number of genes in the database
+    len(db.translations)    # number of non-redundant genes in the database
+
+The complete database can be iterated over like so:
+
+    for geneid, translation in db:
+        print(f">{geneid}\n{translation}\n")
+
+Alternatively, just the non-redundant sequences can be iterated:
+
+    for geneid, translation in db.nr_genes:
+        print(f">{geneid}\n{translation}\n")
+
+A FASTA file can be written containing just the non-redundant sequences like this:
+
+    db.write("/path/to/file.fasta", nr=True)    # nr=False for all genes
+
+Pham assembly is pretty easy with the `assemble_phams` function. You'll need to define the clustering parameters in two
+dictionaries (one for sequence-sequence clustering, one for profile-consensus clustering):
+
+    seq_params = {"identity": 35, "coverage": 80, "evalue": 0.001,
+                  "sensitivity": 7, "cluster_mode": 0, "cluster_steps": 1}
+    hmm_params = {"identity": 15, "coverage": 70, "evalue": 0.001,
+                  "sensitivity": 7, "cluster_mode": 0, "cluster_steps": 3}
+    
+    phams = assemble_phams(db, seq_params, hmm_params)
+
+If profile-consensus clustering is not needed, simply omit the hmm_params:
+
+    phams = assemble_phams(db, seq_params)
+
+`phams` is a list of `Pham` objects, which have a few useful attributes and functions in addition to all those found 
+in the parent class (`SequenceDB`), for example:
+
+    pham = phams[0]
+    pham.minimum_length     # return length of shortest gene -> int
+    pham.average_length     # return average gene length     -> float
+    pham.maximum_length     # return length of longest gene  -> int
+    pham.is_orpham          # is this pham an orpham?        -> bool
+
+If one has reason to do so, phams can easily be merged:
+
+    first, second = phams[0], phams[1]
+    len(first), len(second) # 775, 682
+    first.merge(second)     # copies every sequence from second into first
+
+Far more advanced workflows can be built leveraging the other submodules in phammseqs. For example, one can directly 
+invoke MMseqs2 pipelines, or run ClustalO to generate MSAs of individual FASTA files of interest.
