@@ -1,6 +1,6 @@
-# phamerate
+# PhaMMseqs
 
-The phamerate package facilitates pham assembly using [MMseqs2](https://www.mmseqs.com). Default parameters have
+The PhaMMseqs package facilitates pham assembly using [MMseqs2](https://www.mmseqs.com). Default parameters have
 been carefully tuned for rapid, accurate exploration of the bacteriophage protein sequence space.
 
 # Conda installation
