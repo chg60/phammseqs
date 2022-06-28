@@ -1,7 +1,7 @@
 """Classes for efficient storage and utilization of large numbers of
 sequences."""
 
-from phamerate.fileio import fasta
+from phammseqs.fileio import fasta
 
 
 class SequenceDB:

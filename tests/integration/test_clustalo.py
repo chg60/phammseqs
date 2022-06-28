@@ -5,7 +5,7 @@ Inherently linked to the success of unit tests for sub-processing."""
 import pathlib
 import unittest
 
-from phamerate.clustalo import *
+from phammseqs.clustalo import *
 
 clustalo_version = get_clustalo_version()
 if not clustalo_version:

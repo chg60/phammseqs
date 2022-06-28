@@ -2,7 +2,7 @@
 
 import unittest
 
-from phamerate.multiprocess import parallelize
+from phammseqs.multiprocess import parallelize
 
 
 def _square(x):

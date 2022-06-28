@@ -1,6 +1,6 @@
 """Functions for performing pham assembly with MMseqs2."""
 
-from phamerate import subprocess
+from phammseqs import subprocess
 
 VERSION = "13.45111"
 

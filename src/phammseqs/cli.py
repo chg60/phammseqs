@@ -4,7 +4,7 @@ import argparse
 import datetime
 import pathlib
 
-from phamerate.multiprocess import CPUS
+from phammseqs.multiprocess import CPUS
 
 DATE = datetime.datetime.now().strftime("%d_%b_%Y")
 OUT_DIR = pathlib.Path().cwd().joinpath(f"phamerate__{DATE}")
@@ -32,7 +32,7 @@ Biotechnology, 2017. doi: 10.1038/nbt.3988"""
 
 def parse_args():
     """Parse command line arguments."""
-    p = argparse.ArgumentParser(description=__doc__, prog="phamerate",
+    p = argparse.ArgumentParser(description=__doc__, prog="phammseqs",
                                 epilog=EPILOG)
 
     p.add_argument("infile", nargs="+", type=pathlib.Path,

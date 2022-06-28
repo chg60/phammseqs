@@ -5,10 +5,10 @@ import shutil
 import sys
 import tempfile
 
-from phamerate.SequenceDB import Pham, SequenceDB
-from phamerate import cli, clustalo, fileio, mmseqs
-from phamerate import multiprocess as mp
-from phamerate.pangenome import analyze_pangenome
+from phammseqs.SequenceDB import Pham, SequenceDB
+from phammseqs import cli, clustalo, fileio, mmseqs
+from phammseqs import multiprocess as mp
+from phammseqs.pangenome import analyze_pangenome
 
 
 def create_database(input_files):
@@ -95,7 +95,7 @@ def assemble_phams(db, seq_params, hmm_params=None, cpus=1,
     :return: phams
     """
     # Set up temporary directory and name our temporary files
-    tmp_dir = pathlib.Path(tempfile.mkdtemp(prefix="phamerate-"))
+    tmp_dir = pathlib.Path(tempfile.mkdtemp(prefix="phammseqs-"))
 
     nr_fasta = tmp_dir.joinpath("nr_genes.fasta")
 
@@ -260,7 +260,7 @@ def align_phams(phams, fasta_dir, align_dir, cpus=1, verbose=False):
 
 def main():
     """Commandline entry point for this module."""
-    # Invoke the help menu if phamerate was run_clustalo without args
+    # Invoke the help menu if phammseqs was run_clustalo without args
     if len(sys.argv) == 1:
         sys.argv.append("-h")
     args = cli.parse_args()

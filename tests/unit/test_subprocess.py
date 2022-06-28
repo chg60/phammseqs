@@ -2,7 +2,7 @@
 
 import unittest
 
-from phamerate.subprocess import run
+from phammseqs.subprocess import run
 
 
 class MyTestCase(unittest.TestCase):

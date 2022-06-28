@@ -1,6 +1,6 @@
 """Functions for running Clustal Omega"""
 
-from phamerate import subprocess
+from phammseqs import subprocess
 
 VERSION = "1.2.4"
 

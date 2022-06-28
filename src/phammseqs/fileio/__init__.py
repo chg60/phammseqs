@@ -1,5 +1,5 @@
-from phamerate.fileio.fasta import read_fasta, write_fasta
-from phamerate.fileio.genbank import read_genbank
+from phammseqs.fileio.fasta import read_fasta, write_fasta
+from phammseqs.fileio.genbank import read_genbank
 
 
 def sniff_format(filepath):

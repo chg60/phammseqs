@@ -1,7 +1,7 @@
 """Classes and functions to perform basic pangenome analysis."""
 
-from phamerate.SequenceDB import SequenceDB, Pham
-from phamerate import fileio
+from phammseqs.SequenceDB import SequenceDB, Pham
+from phammseqs import fileio
 
 summary_template = """
 Core genes (99% <= strains <= 100%):    {}

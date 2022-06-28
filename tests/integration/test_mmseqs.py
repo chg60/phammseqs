@@ -7,8 +7,8 @@ import shutil
 import tempfile
 import unittest
 
-from phamerate.mmseqs import *
-from phamerate.multiprocess import CPUS
+from phammseqs.mmseqs import *
+from phammseqs.multiprocess import CPUS
 
 mmseqs_version = get_mmseqs_version()
 if not mmseqs_version:

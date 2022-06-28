@@ -4,7 +4,7 @@ flatfile reading."""
 import pathlib
 import unittest
 
-from phamerate.fileio import *
+from phammseqs.fileio import *
 
 file_dir = pathlib.Path(__file__).parent.parent.joinpath("files/fileio")
 
