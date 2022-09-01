@@ -122,8 +122,9 @@ def analyze_pangenome(phams, infiles, outdir):
             if name in pham_genomes:
                 geneids = pham_genomes[name]
                 roary_row.append(";".join([x.split()[0] for x in geneids]))
-                for _ in geneids:
-                    strain_rows.append((name, phamid))
+                for geneid in geneids:
+                    translation = pham.get_geneid_translation(geneid)
+                    strain_rows.append((name, phamid, translation))
             else:
                 roary_row.append("")
 
@@ -171,5 +172,5 @@ def analyze_pangenome(phams, infiles, outdir):
 
     strain_genes_file = outdir.joinpath("strain_genes.tsv")
     with open(strain_genes_file, "w") as strain_genes_writer:
-        for name, phamid in strain_rows:
-            strain_genes_writer.write(f"{name}\t{phamid}\n")
+        for strain_row in strain_rows:
+            strain_genes_writer.write("\t".join(strain_row) + "\n")
